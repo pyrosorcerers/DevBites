@@ -227,3 +227,4 @@ production environments both stay nice and clean!
 HEY EVERYBODY I'M EDITING THIS DOC, PLEASE DON'T GET ANGRY AT ME
 add-Dzmitry-name
 adding something to master
+made new changes to check if slack notifications working!
