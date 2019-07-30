@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Meal, Order, MealOrder} = require('../server/db/models')
 
 const users = [
   {
@@ -456,6 +456,119 @@ const users = [
   }
 ]
 
+const meals = [
+  {
+    name: 'Ribs',
+    image:
+      'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/7/21/3/FNM_090115-Best-Barbecue-Ribs-Ever-Recipe_s4x3.jpg.rend.hgtvcom.826.620.suffix/1437691887821.jpeg',
+    description:
+      'Best Barbecue Ribs Ever. Unbelievably tender and tasty. This is the only way You will eat ribs from now on',
+    calories: 600,
+    ingredients: [
+      'sugar',
+      'chili powder',
+      'salt and freshly ground black pepper',
+      'oregano',
+      'cayenne pepper',
+      'garlic powder',
+      'onion powder',
+      '2 racks baby back ribs',
+      'chicken broth',
+      'apple cider vinegar',
+      'barbecue sauce'
+    ]
+  },
+  {
+    name: 'Spaghetti alla Carbonara',
+    image:
+      'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2009/6/12/2/FO1D41_23785_s4x3.jpg.rend.hgtvcom.826.620.suffix/1431766590243.jpeg',
+    description:
+      'One of the best recipes Spaghetti alla Carbonara you will found!',
+    calories: 700,
+    ingredients: [
+      'spaghetti',
+      'extra-virgin olive oil',
+      'bacon, cubed or sliced into small strips',
+      'garlic cloves, finely chopped',
+      'eggs',
+      'freshly grated Parmigiano-Reggiano, plus more for serving',
+      'black pepper',
+      'fresh flat-leaf parsley, chopped'
+    ]
+  },
+  {
+    name: 'Grilled Steak',
+    image:
+      'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2010/4/26/0/FNM_060110-Bobby-Grilling-013_s4x3.jpg.rend.hgtvcom.826.620.suffix/1382539247827.jpeg',
+    description: 'Perfectly Grilled Steak',
+    calories: 500,
+    ingredients: [
+      '1 1/4-to-1 1/2-inch-thick boneless rib-eye or New York strip steaks (about 12 ounces each) or filets mignons (8 to 10 ounces each), trimmed',
+      'canola or extra-virgin olive oil',
+      'salt and freshly ground pepper'
+    ]
+  },
+  {
+    name: 'Seared Salmon & Miso-Butter Glaze',
+    image:
+      'https://media.blueapron.com/recipes/22171/square_newsletter_images/1562687446-33-0025-8899/0805_2PF-Salmon_4441_SQ_hi_res.jpg',
+    description:
+      'This simple, sophisticated dish features flaky salmon, cooked with an irresistibly rich glaze made from butter and miso paste until browned and tender. A side of sautéed corn and snow peas makes for a naturally sweet, seasonal accompaniment, while a bed of fluffy jasmine rice rounds out the dish on a hearty note.',
+    calories: 500,
+    ingredients: [
+      'Skin-On Salmon Fillet',
+      'Jasmine Rice',
+      'Snow Peas',
+      'Of Corn',
+      'Garlic',
+      'Sweet White Miso Paste',
+      'Butter',
+      'Mirin',
+      'Vegetable Demi-Glace'
+    ]
+  },
+  {
+    name: 'Caribbean-Spiced Chicken Thighs',
+    image:
+      'https://media.blueapron.com/recipes/22318/square_newsletter_images/1563207469-34-0004-6645/0415_2PM_Caribbean-Chicken_0017_Square_hi_res.jpg',
+    description:
+      'This summer, we’re bringing you 12 weeks of recipes designed with busy schedules and flexibility in mind. We’re celebrating the bold, exciting flavors of West Indian cuisine with this recipe, which features chicken coated with spices like green bell pepper powder, cayenne, and allspice, then served over cooling coconut rice.',
+    calories: 800,
+    ingredients: [
+      'Boneless, Skinless Chicken Thighs',
+      'Jasmine Rice',
+      'Light Coconut Milk',
+      'Persian Cucumber',
+      'Sweet Peppers',
+      'Sugar',
+      'Apple Cider Vinegar',
+      'Mayonnaise',
+      'Sambal Oelek',
+      'Caribbean Spice Blend (Green Bell Pepper Powder, Onion Powder, Cayenne Pepper, Ground Thyme & Ground Allspice)'
+    ]
+  },
+  {
+    name: 'Caramelized Onion & Cheddar Beyond Burgers',
+    image:
+      'https://media.blueapron.com/recipes/22488/square_newsletter_images/1563983848-34-0049-6496/0819_2PRE07_White-Cheddar-Burger_4748_sq_Web_hi_res.jpg',
+    description:
+      'Chefs, we’re excited to introduce you to the star of this delicious recipe, the plant-based Beyond Burger™, which gets a gourmet lift from two of our favorite toppings: melty white cheddar and sweet onion caramelized with balsamic vinegar.',
+    calories: 800,
+    ingredients: [
+      'Beyond Burger ™ Plant-Based',
+      'Potato Buns',
+      'Garlic',
+      'Green Beans',
+      'White Cheddar Cheese',
+      'Balsamic Vinegar',
+      'Italian Seasoning (Whole Dried Basil, Sage, Oregano, Savory, Rosemary, Thyme & Marjoram)',
+      'Pickled Peruvian Peppers',
+      'Apple Cider Vinegar',
+      'Sweet Onion'
+    ]
+  }
+]
+
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
@@ -463,6 +576,12 @@ async function seed() {
   await Promise.all(
     users.map(user => {
       return User.create(user)
+    })
+  )
+
+  await Promise.all(
+    meals.map(meal => {
+      return Meal.create(meal)
     })
   )
 
