@@ -22,6 +22,10 @@ const Meal = db.define('meal', {
   ingredients: {
     type: Sequelize.ARRAY(Sequelize.STRING),
     allowNull: false
+  },
+  price: {
+    type: Sequelize.DECIMAL,
+    allowNull: false
   }
 })
 

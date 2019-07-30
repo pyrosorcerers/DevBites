@@ -476,7 +476,8 @@ const meals = [
       'chicken broth',
       'apple cider vinegar',
       'barbecue sauce'
-    ]
+    ],
+    price: '10'
   },
   {
     name: 'Spaghetti alla Carbonara',
@@ -494,7 +495,8 @@ const meals = [
       'freshly grated Parmigiano-Reggiano, plus more for serving',
       'black pepper',
       'fresh flat-leaf parsley, chopped'
-    ]
+    ],
+    price: '11'
   },
   {
     name: 'Grilled Steak',
@@ -506,7 +508,8 @@ const meals = [
       '1 1/4-to-1 1/2-inch-thick boneless rib-eye or New York strip steaks (about 12 ounces each) or filets mignons (8 to 10 ounces each), trimmed',
       'canola or extra-virgin olive oil',
       'salt and freshly ground pepper'
-    ]
+    ],
+    price: '12'
   },
   {
     name: 'Seared Salmon & Miso-Butter Glaze',
@@ -525,7 +528,8 @@ const meals = [
       'Butter',
       'Mirin',
       'Vegetable Demi-Glace'
-    ]
+    ],
+    price: '14'
   },
   {
     name: 'Caribbean-Spiced Chicken Thighs',
@@ -545,7 +549,8 @@ const meals = [
       'Mayonnaise',
       'Sambal Oelek',
       'Caribbean Spice Blend (Green Bell Pepper Powder, Onion Powder, Cayenne Pepper, Ground Thyme & Ground Allspice)'
-    ]
+    ],
+    price: '15'
   },
   {
     name: 'Caramelized Onion & Cheddar Beyond Burgers',
@@ -565,7 +570,8 @@ const meals = [
       'Pickled Peruvian Peppers',
       'Apple Cider Vinegar',
       'Sweet Onion'
-    ]
+    ],
+    price: '16'
   }
 ]
 
