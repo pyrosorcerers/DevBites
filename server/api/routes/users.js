@@ -1,8 +1,8 @@
 const router = require('express').Router()
-const User = require('../../db/models/user')
-const Orders = require('../../db/models/order')
-const mealOrder = require('../../db/models/mealOrder')
-const Meals = require('../../db/models/meal')
+const {User, Meal, Order, MealOrder} = require('../../db/models')
+// const Orders = require('../../db/models/order')
+// const mealOrder = require('../../db/models/mealOrder')
+// const Meals = require('../../db/models/meal')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -30,10 +30,10 @@ router.get('/:id', async (req, res, next) => {
 
 router.get('/:id/orders', async (req, res, next) => {
   try {
-    const userOrders = await mealOrder.findAll({
-      includes: [{models: Orders, Meals}],
+    const userOrders = await Order.findAll({
+      include: [{model: Meal}],
       where: {
-        orderId: req.params.id
+        userId: req.params.id
       }
     })
     res.json(userOrders)
