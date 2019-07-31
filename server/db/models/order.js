@@ -13,6 +13,7 @@ const Order = db.define('order', {
 })
 
 Order.prototype.setTotalPrice = async function() {
+  // find all meals associated with this order
   const mealOrders = await MealOrder.findAll({
     where: {
       orderId: this.id
@@ -24,7 +25,6 @@ Order.prototype.setTotalPrice = async function() {
   })
   this.totalPrice = totalPrice
   this.save()
-  console.log(totalPrice)
 }
 
 module.exports = Order

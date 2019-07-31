@@ -9,7 +9,6 @@ class singleMeal extends React.Component {
   }
 
   handleSubmit() {
-    console.log('working?')
     this.props.addToCart(this.props.match.params.id)
   }
 
