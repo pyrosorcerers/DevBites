@@ -3,6 +3,39 @@
 const db = require('../server/db')
 const {User, Meal, Order, MealOrder} = require('../server/db/models')
 
+const mealOrders = [
+  {
+    quantity: 1,
+    mealId: 1,
+    orderId: 1
+  },
+  {
+    quantity: 1,
+    mealId: 2,
+    orderId: 1
+  },
+  {
+    quantity: 1,
+    mealId: 3,
+    orderId: 3
+  }
+]
+
+const orders = [
+  {
+    isCart: false,
+    userId: 1
+  },
+  {
+    isCart: false,
+    userId: 2
+  },
+  {
+    isCart: true,
+    userId: 3
+  }
+]
+
 const users = [
   {
     id: 1,
@@ -1224,8 +1257,20 @@ async function seed() {
   )
 
   await Promise.all(
+    orders.map(order => {
+      return Order.create(order)
+    })
+  )
+
+  await Promise.all(
     meals.map(meal => {
       return Meal.create(meal)
+    })
+  )
+
+  await Promise.all(
+    mealOrders.map(mealOrder => {
+      return MealOrder.create(mealOrder)
     })
   )
 
