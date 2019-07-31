@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import {me} from './store'
 import Meals from './components/Menu'
+import SingleMeal from './components/SingleMeal'
 
 /**
  * COMPONENT
@@ -20,6 +21,7 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
+        <Route path="/menu/:id" component={SingleMeal} />
         <Route path="/menu" component={Meals} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
