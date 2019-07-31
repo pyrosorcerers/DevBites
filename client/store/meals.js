@@ -26,9 +26,9 @@ export const getMealsThunk = () => {
 
 // reducer
 // export to store/index.js combineReducer
-const defaultUser = []
+const meals = []
 
-export default function(state = defaultUser, action) {
+export default function(state = meals, action) {
   switch (action.type) {
     case GET_MEALS:
       return action.meals
