@@ -572,6 +572,644 @@ const meals = [
       'Sweet Onion'
     ],
     price: '16'
+  },
+  {
+    name: 'Chipotle Beef Taco Salad',
+    image:
+      'https://media.blueapron.com/recipes/22133/square_newsletter_images/1561058164-33-0066-3858/0722_W5_Beef-Salad_3176_Square_Web_hi_res.jpg',
+    description:
+      'Pepitas (or pumpkin seeds) are beloved in Mexican cuisine for their satisfying crunch and rich, nutty flavor, which shines here when briefly toasted in the pan, then tossed in a mixture of garlic and lime zest—the perfect garnish for our bright, zesty beef taco salad.This recipe was created in partnership with the wellness experts at WW. To learn more about WW and SmartPoints®visit ww.com',
+    calories: '570',
+    ingredients: [
+      'Thinly Sliced Beef',
+      'Romaine Lettuce Heart',
+      'Of Corn',
+      'Garlic',
+      'Monterey Jack Cheese',
+      'Lime',
+      'Guacamole',
+      'Chipotle Chile Paste',
+      'Raw Pepitas'
+    ],
+    price: 17
+  },
+  {
+    name: 'Creamy Chipotle Chicken',
+    image:
+      'https://media.blueapron.com/recipes/22118/square_newsletter_images/1561055853-33-0033-8885/0722_2PRE07_Chicken_3275_Square_Web_hi_res.jpg',
+    description:
+      'Our verdant cilantro sauce (which also features onions, garlic, jalapeño, and lime juice) lends bold, herbaceous flavor to sautéed vegetables and jasmine rice—a satisfying accompaniment to bites of tender chicken dressed with a delightfully spicy-sweet chipotle mayo.',
+    calories: '740',
+    ingredients: [
+      'Chopped Chicken Breast',
+      'Jasmine Rice',
+      'Sweet Onion',
+      'Poblano Pepper',
+      'Cornstarch',
+      'Grated Cotija Cheese',
+      'Mayonnaise',
+      'Chipotle Chile Paste',
+      'Cilantro Sauce',
+      'Honey'
+    ],
+    price: 19
+  },
+  {
+    name: 'Southern-Style Chicken & Corn',
+    image:
+      'https://media.blueapron.com/recipes/22196/square_newsletter_images/1561056691-34-0045-6453/0722_W1_Chicken_3209_Square_Web_hi_res.jpg',
+    description:
+      'To contrast the bold, smoky spices on our seared chicken, we’re serving it with a side of sweet corn and topping them both with an irresistibly rich honey butter, which slowly melts onto the corn kernels and lightly charred exterior of our chicken. It’s all complete with our vibrant slaw, which gets exciting texture from pickled mustard seeds.This recipe was created in partnership with the wellness experts at WW. To learn more about WW and SmartPoints® visit ww.com',
+    calories: '510',
+    ingredients: [
+      'Boneless, Skinless Chicken Breasts',
+      'Persian Cucumber',
+      'Of Corn',
+      'Red Cabbage',
+      'Honey',
+      'Butter',
+      'Sugar',
+      'Apple Cider Vinegar',
+      'Brown & Yellow Mustard Seeds',
+      'Smoky Spice Blend (Smoked Paprika, Sweet Paprika, Ground Yellow Mustard, Garlic Powder & Onion Powder)'
+    ],
+    price: 18
+  },
+  {
+    name: 'Spicy Soy-Glazed Chicken Thighs',
+    image:
+      'https://media.blueapron.com/recipes/22194/square_newsletter_images/1561063776-34-0007-7894/0722_FPRE05_Chicken_3302_Square_Web_hi_res.jpg',
+    description:
+      'The classic pairing of chicken and rice gets Korean flair from a glaze made with spicy gochujang spooned over our chicken as it cooks. To round out this quick-cooking meal, sliced cabbageand green beans are pan-steamed to retain their vibrant colors.',
+    calories: '690',
+    ingredients: [
+      'Boneless, Skinless Chicken Thighs',
+      'Jasmine Rice',
+      'Red Cabbage',
+      'Green Beans',
+      'Crème Fraîche',
+      'Black Bean Sauce',
+      'Soy Glaze',
+      'Gochujang',
+      'Ghee',
+      'Kombu'
+    ],
+    price: 18
+  },
+  {
+    name: 'Sour Cherry Salmon',
+    image:
+      'https://media.blueapron.com/recipes/22124/square_newsletter_images/1561065191-34-0027-0651/0722_FPF_Salmon_3355_Square_Web_hi_res.jpg',
+    description:
+      'This summer, we’re bringing you 12 weeks of recipes designed with busy schedules and flexibility in mind. A duo of summer vegetables tossed with nutty farro is the perfect partner for ourflaky salmon––topped with a sweet-tart sauce of sour cherry and creamy mustard.',
+    calories: '700',
+    ingredients: [
+      '10-Oz Skin-On Salmon Fillets',
+      'Semi-Pearled Farro',
+      'Zucchini',
+      'Of Corn',
+      'Scallions',
+      'Thyme',
+      'Red Wine Vinegar',
+      'Sour Cherry Spread',
+      'Crème Fraîche',
+      'Creamy Mustard Sauce'
+    ],
+    price: 16
+  },
+  {
+    name: 'Sweet Chili-Glazed Salmon',
+    image:
+      'https://media.blueapron.com/recipes/22200/square_newsletter_images/1561057392-33-0051-3448/0722_W02_Salmon_3237_Square_Web_hi_res.jpg',
+    description:
+      'To pair with our savory-sweet glazed salmon and sautéed vegetables, we’re jazzing up a side of fluffy jasmine rice by infusing it with an aromatic duo of garlic and scallions—first cookedin fragrant sesame oil for rich flavor.This recipe was created in partnership with the wellness experts at WW. To learn more about WW and SmartPoints® visit ww.com',
+    calories: '710',
+    ingredients: [
+      'Skin-On Salmon Fillet',
+      'Jasmine Rice',
+      'Sugar Snap Peas',
+      'Carrots',
+      'Scallions',
+      'Garlic',
+      'Soy Sauce',
+      'Sweet Chili Sauce',
+      'Sesame Oil'
+    ],
+    price: 16
+  },
+  {
+    name: 'Smoky Chicken & Honey Butter',
+    image:
+      'https://media.blueapron.com/recipes/22115/square_newsletter_images/1561055081-33-0025-8001/0722_2PP_Chicken_3199_Square_Web_hi_res.jpg',
+    description:
+      'To give this classic, Southern-style chicken dish a sophisticated lift, we’re quickly pickling a combination of brown and yellow mustard seeds in sugar and vinegar, then tossing them withcrisp cabbage and cucumber for exciting texture and piquant flavor in our slaw. It’s the perfect partner for the sweet, rich honey butter that tops our chicken and corn.',
+    calories: '510',
+    ingredients: [
+      'Boneless, Skinless Chicken Breasts',
+      'Persian Cucumber',
+      'Of Corn',
+      'Red Cabbage',
+      'Honey',
+      'Butter',
+      'Sugar',
+      'Apple Cider Vinegar',
+      'Smoky Spice Blend (Smoked Paprika, Sweet Paprika, Ground Yellow Mustard, Garlic Powder & Onion Powder)',
+      'Brown & Yellow Mustard Seeds'
+    ],
+    price: 19
+  },
+  {
+    name: 'Mexican-Spiced Chicken & Lime Sour Cream',
+    image:
+      'https://media.blueapron.com/recipes/22075/square_newsletter_images/1560199686-34-0012-5929/0715_FPP_Chicken_3655_Square_hi_res.jpg',
+    description:
+      'This summer, we’re bringing you 12 weeks of recipes designed with busy schedules and flexibility in mind. To make a hearty base for juicy chicken thighs, we’re making a warm farro salad that invokes the flavors of esquites––a Mexican street food favorite––by tossing in a traditional combo of fresh sweet corn, tart lime, and creamy mayonnaise.',
+    calories: '660',
+    ingredients: [
+      'Boneless, Skinless Chicken Breasts',
+      'Semi-Pearled Farro',
+      'Of Corn',
+      'Sweet Peppers',
+      'Lime',
+      'Scallions',
+      'Mayonnaise',
+      'Sour Cream',
+      'Grated Cotija Cheese',
+      'Crushed Red Pepper Flakes',
+      'Mexican Spice Blend (Ancho Chile Powder, Smoked Paprika, Garlic Powder, Ground Cumin & Dried Mexican Oregano)'
+    ],
+    price: 19
+  },
+  {
+    name: 'Spicy Beef & Broccoli',
+    image:
+      'https://media.blueapron.com/recipes/22227/square_newsletter_images/1560199517-33-0012-3461/0715_FPV_Beef-Broccoli_3636_Square_hi_res.jpg',
+    description:
+      'Tender bites of beef, broccoli, and peppers are quickly brought together with an irresistible sauce of sweet hoisin, spicy sambal, and more to create this takeout-style classic. The flavorful medley is complemented by a fragrant bed of garlic rice.',
+    calories: '610',
+    ingredients: [
+      'Thinly Sliced Beef',
+      'Jasmine Rice',
+      'Scallions',
+      'Sweet Peppers',
+      'Garlic',
+      'Broccoli',
+      'Sambal Oelek',
+      'Hoisin Sauce',
+      'Soy Glaze',
+      'Cornstarch',
+      'Rice Vinegar'
+    ],
+    price: 16
+  },
+  {
+    name: 'Chesapeake-Spiced Tilapia',
+    image:
+      'https://media.blueapron.com/recipes/22221/square_newsletter_images/1560265433-34-0061-3837/0325_WW04_Cajun-Tilapia_063_Square_Web_hi_res.jpg',
+    description:
+      'The Chesapeake Bay region is famous for its seafood dishes, often rich with warm, zippy spices like sweet paprika, celery seeds, ground yellow mustard, and bay leaves, which create a flavorful coating for our flaky tilapia fillets. It’s the perfect partner for a bed of simply sautéed vegetables perked up with pickled jalapeño.This recipe was created in partnership with the wellness experts at WW. To learn more about WW and SmartPoints® visit ww.com',
+    calories: '280',
+    ingredients: [
+      'Tilapia Fillets',
+      'Sweet Peppers',
+      'Garlic',
+      'Zucchini',
+      'Scallions',
+      'Sliced Pickled Jalapeño Pepper',
+      'Vegetarian Worcestershire Sauce',
+      'Vegetable Demi-Glace',
+      'Chesapeake Spice Blend (Sweet Paprika, Celery Seeds, Ground Yellow Mustard & Ground Bay Leaves)'
+    ],
+    price: 15
+  },
+  {
+    name: 'Chicken & Black Bean Burrito Bowls',
+    image:
+      'https://media.blueapron.com/recipes/22127/square_newsletter_images/1561064598-34-0020-8572/0722_FPV_Burrito-Bowl_3314_Square_Web_hi_res.jpg',
+    description:
+      "This summer, we’re bringing you 12 weeks of recipes designed with busy schedules and flexibility in mind. To garnish these hearty burrito bowls, you'll make your own crispy tortilla strips by pan-frying flour tortillas until golden brown and crispy––perfectly contrasted by a cooling dollop of guacamole also served on top.",
+    calories: '730',
+    ingredients: [
+      'Chopped Chicken Breast',
+      'Flour Tortillas',
+      '15.5-Ounce Can Black Beans',
+      'Sushi Rice',
+      'Poblano Pepper',
+      'Sweet Onion',
+      'Cilantro Sauce',
+      'Ancho Chile Paste',
+      'Guacamole',
+      'Chicken Demi-Glace',
+      'Barbecue Spice Blend (Smoked Paprika, Sweet Paprika, Ground Fennel Seeds, Ground Coriander, Garlic Powder & Light Brown Sugar)'
+    ],
+    price: 18
+  },
+  {
+    name: 'Glazed Chicken',
+    image:
+      'https://media.blueapron.com/recipes/22117/square_newsletter_images/1561054506-33-0018-8859/0722_2PM_Chicken_3264_Square_Web_hi_res.jpg',
+    description:
+      'This summer, we’re bringing you 12 weeks of recipes designed with busy schedules and flexibility in mind. Here, classic pasta salad gets a robust upgrade from our savory tomato chutney, whose irresistibly tangy, sweet, and spicy flavor is classic in Indian cuisine. It’s the perfect accompaniment to seared chicken glazed with a simple duo of vinegar and brown sugar.',
+    calories: '960',
+    ingredients: [
+      'Boneless, Skinless Chicken Thighs',
+      'Mafalda Pasta',
+      'Zucchini',
+      'Sweet Peppers',
+      'Savory Tomato Chutney',
+      'Dried Currants',
+      'Light Brown Sugar',
+      'Apple Cider Vinegar',
+      'Sweetened Toasted Coconut Chips',
+      'Crème Fraîche',
+      'Weeknight Hero Spice Blend (Onion Powder, Garlic Powder, Smoked Paprika & Whole Dried Parsley)'
+    ],
+    price: 18
+  },
+  {
+    name: 'Smoky Chickpea Gyros',
+    image:
+      'https://media.blueapron.com/recipes/22074/square_newsletter_images/1560264625-35-0019-4630/0715_2PV3_Gyros_3512_Square_hi_res.jpg',
+    description:
+      'We’re bringing the flavors of classic Greek street food to your kitchen with these satisfying pitas—spread with yogurt-dressed cucumbers (a take on tzatziki), then topped with hearty chickpeas and onion sautéed with smoky harissa paste. It’s all complete with our simple side salad of crisp romaine, sweet roasted peppers, and crumbly feta.',
+    calories: '620',
+    ingredients: [
+      'Pocketless Pitas',
+      'Persian Cucumbers',
+      'Red Onion',
+      'Romaine Lettuce Heart',
+      'Garlic',
+      'Plain Nonfat Greek Yogurt',
+      'Sliced Roasted Red Peppers',
+      'Feta Cheese',
+      'Red Harissa Paste',
+      'Red Wine Vinegar',
+      '15.5 -Ounce Can Chickpeas'
+    ],
+    price: 18
+  },
+  {
+    name: 'Pork Chops & Buttermilk Mashed Potatoes',
+    image:
+      'https://media.blueapron.com/recipes/22079/square_newsletter_images/1560199148-33-0001-1158/0715_FP5_Pork-Chops_3619_Square_hi_res.jpg',
+    description:
+      'We’re topping our savory pork chops with a rich pan sauce that highlights the classic duo of honey and mustard. Sides of creamy buttermilk mashed potatoes and a summery vegetable sauté offresh tomatoes, green beans, and sweet peppers bring flavorful contrast to the dish.',
+    calories: '630',
+    ingredients: [
+      'Boneless, Center-Cut Pork Chops',
+      'Golden Potatoes',
+      'Garlic',
+      'Green Beans',
+      'Sweet Peppers',
+      'Grape Tomatoes',
+      'Ghee',
+      'Whole Grain Dijon Mustard',
+      'Chicken Bone Broth',
+      'Honey',
+      'Buttermilk',
+      'Red Wine Vinegar',
+      'Weeknight Hero Spice Blend (Onion Powder, Garlic Powder, Smoked Paprika & Whole Dried Parsley)'
+    ],
+    price: 18
+  },
+  {
+    name: 'Pesto Fusilli Pasta',
+    image:
+      'https://media.blueapron.com/recipes/22072/square_newsletter_images/1560200636-33-0038-1704/0715_2PV1_Pesto-Pasta_3584_Square_hi_res.jpg',
+    description:
+      'This summer, we’re bringing you 12 weeks of recipes designed with busy schedules and flexibility in mind. This bright summer pasta highlights two of our favorite seasonal ingredients: fresh, juicy tomatoes and crisp, sweet corn, which we’re folding into the warm pasta along with our basil pesto for an herbaceous boost of flavor.',
+    calories: '730',
+    ingredients: [
+      'Fusilli Bucati Corti Pasta',
+      'Scallions',
+      'Of Corn',
+      'Grape Tomatoes',
+      'Grated Parmesan Cheese',
+      'Mascarpone Cheese',
+      'Basil Pesto',
+      'Sliced Roasted Red Peppers',
+      'Crushed Red Pepper Flakes'
+    ],
+    price: 15
+  },
+  {
+    name: 'Chicken Lettuce Cups',
+    image:
+      'https://media.blueapron.com/recipes/22070/square_newsletter_images/1560264751-34-0028-2239/0715_2PRE07_Lettuce-Wraps_3609_Square_hi_res.jpg',
+    description:
+      'This summer, we’re bringing you 12 weeks of recipes designed with busy schedules and flexibility in mind. Tucked inside soft butter lettuce leaves, a filling of sushi rice, savory chicken, and spicy pickled carrots come together with a drizzle of mayo mixed with hoisin sauce—a rich, fragrant condiment beloved in Chinese cuisine with a sweetness similar to barbecue.',
+    calories: '660',
+    ingredients: [
+      'Chopped Chicken Breast',
+      'Sushi Rice',
+      'Butter Lettuce',
+      'Persian Cucumbers',
+      'Carrots',
+      'Soy Sauce',
+      'Gochujang',
+      'Hoisin Sauce',
+      'Sugar',
+      'Mayonnaise',
+      'Rice Vinegar'
+    ],
+    price: 16
+  },
+  {
+    name: 'Calabrian Shrimp & Orzo',
+    image:
+      'https://media.blueapron.com/recipes/22162/square_newsletter_images/1560264380-34-0013-7107/0121_2PF_Shrimp-Orzo_2549_Square_Web_hi_res.jpg',
+    description:
+      'This quick and easy dish highlights tender orzo pasta and plump shrimp, which get vibrant depth of flavor (and the perfect amount of mild heat) from a coating of hot red chile paste. We’re finishing it all with a bit of cooling crème fraîche and tart lemon juice, plus a sprinkle of parmesan cheese.',
+    calories: '480',
+    ingredients: [
+      'Tail-On Shrimp (Peeled & Deveined)',
+      'Orzo Pasta',
+      'Zucchini',
+      'Garlic',
+      'Lemon',
+      'Calabrian Chile Paste',
+      'Crème Fraîche',
+      'Capers',
+      'Grated Parmesan Cheese'
+    ],
+    price: 19
+  },
+  {
+    name: 'Cajun-Style Pork & Farro Salad',
+    image:
+      'https://media.blueapron.com/recipes/22084/square_newsletter_images/1560265580-35-0037-9848/0715_W5_Cajun-Pork_3589_Square_hi_res.jpg',
+    description:
+      'To contrast the bold, vibrant flavors of Cajun cuisine featured in this dish, we’re topping seared pork with a combo of creamy yogurt mixed with piquante peppers—a pickled variety belovedfor their tangy-sweet flavor and vivid red color.This recipe was created in partnership with the wellness experts at WW. To learn more about WW and SmartPoints® visit ww.com',
+    calories: '560',
+    ingredients: [
+      'Boneless, Center-Cut Pork Chops',
+      'Semi-Pearled Farro',
+      'Of Corn',
+      'Scallions',
+      'Garlic',
+      'Celery',
+      'Hot Sauce',
+      'Sweet Piquante Peppers',
+      'Plain Nonfat Greek Yogurt',
+      'Cajun Spice Blend (Smoked Paprika, Ground Yellow Mustard, Onion Powder, Garlic Powder, Whole Dried Oregano, Whole Dried Thyme & Cayenne Pepper)'
+    ],
+    price: 15
+  },
+  {
+    name: 'Summer Vegetable Pizza',
+    image:
+      'https://media.blueapron.com/recipes/22195/square_newsletter_images/1561064186-34-0016-5981/0722_FPR6_Pizza_3368_Square_Web_hi_res.jpg',
+    description:
+      'This crowd-pleasing pizza features one of our favorite seasonal ingredients: fresh, sweet corn, which we’re pairing with crisp peppers and a duo of melty cheeses for bursts of bright flavor in every bite. For an elevated twist on a classic side salad, we’re tossing crunchy romaine and cucumbers with a dressing of creamy mustard sauce and tangy goat cheese.',
+    calories: '790',
+    ingredients: [
+      'Pizza Dough',
+      'Garlic',
+      'Romaine Lettuce Heart',
+      'Of Corn',
+      'Persian Cucumbers',
+      'Sweet Peppers',
+      'Carrots',
+      'Fresh Mozzarella Cheese',
+      'Creamy Mustard Sauce',
+      'Smoked Gouda Cheese',
+      'Goat Cheese',
+      'Grana Padano Cheese',
+      'Crushed Red Pepper Flakes',
+      '14-Ounce Can Whole Peeled Tomatoes'
+    ],
+    price: 15
+  },
+  {
+    name: 'Cumin-Sichuan Peppercorn Beef',
+    image:
+      'https://media.blueapron.com/recipes/22164/square_newsletter_images/1560200479-34-0030-3823/0128_2PRE08_Cumin-Beef-Noodles_Sesame_013_201_Square_Crop_hi_res.jpg',
+    description:
+      'For this vibrant dish, you’ll make a saucy stir-fry of beef and broccoli cooked in a bold combo of sweet soy glaze and fragrant cumin-Sichuan peppercorn sauce. It’s all served over delightfully chewy ramen noodles—perfect for catching every bite.',
+    calories: '820',
+    ingredients: [
+      'Ground Beef',
+      'Fresh Ramen Noodles (Previously Frozen)',
+      'Broccoli',
+      'Garlic',
+      'Cumin & Sichuan Peppercorn Sauce',
+      'Soy Glaze',
+      'Black & White Sesame Seeds',
+      'Crushed Red Pepper Flakes'
+    ],
+    price: 17
+  },
+  {
+    name: 'Seared Pork Chops & Chipotle Mayo',
+    image:
+      'https://media.blueapron.com/recipes/22069/square_newsletter_images/1560264482-35-0014-9838/0715_2PM_Prok_3600_Square_hi_res.jpg',
+    description:
+      'A pair of irresistibly spicy-sweet condiments lend exciting, bold flavor to this dish: fiery chipotle chile paste mixed with creamy mayo is spooned over seared pork, while a crowd-pleasing duo of honey and crushed red pepper dresses our hearty side of red and wild rices tossed with snap peas.',
+    calories: '650',
+    ingredients: [
+      'Boneless, Center-Cut Pork Chops',
+      'Red Rice Blend',
+      'Sugar Snap Peas',
+      'Honey',
+      'Red Wine Vinegar',
+      'Mayonnaise',
+      'Chipotle Chile Paste',
+      'Grated Cotija Cheese',
+      'Crushed Red Pepper Flakes'
+    ],
+    price: 17
+  },
+  {
+    name: 'Smoked Gouda & Monterey Jack Grilled Cheese',
+    image:
+      'https://media.blueapron.com/recipes/22073/square_newsletter_images/1560457340-34-0010-1940/0715_2PV2_Grilled-Cheese_3575_Square_hi_res.jpg',
+    description:
+      'For an easy, sophisticated twist on classic grilled cheese, we’re layering two kinds of melty cheeses with earthy mushrooms and tangy pickled shallot between slices of toasted sourdough. For bright contrast, we’re making a slaw of crunchy cucumber and cabbage tossed with a piquant duo of mustard and the shallot pickling liquid.',
+    calories: '640',
+    ingredients: [
+      'Sourdough Pullman Bread',
+      'Red Cabbage',
+      'Cremini Mushrooms',
+      'Persian Cucumbers',
+      'Smoked Gouda Cheese',
+      'Monterey Jack Cheese',
+      'Shallot',
+      'Red Wine Vinegar',
+      'Sugar',
+      'Whole Grain Dijon Mustard'
+    ],
+    price: 17
+  },
+  {
+    name: 'Harissa Chickpea Gyros',
+    image:
+      'https://media.blueapron.com/recipes/22167/square_newsletter_images/1560265297-34-0052-4933/0715_W3_Gyros_3500_Square_hi_res.jpg',
+    description:
+      'Our vegetarian take on the classic Greek sandwich features warmed pitas stuffed with smoky sautéed chickpeas and onion, whose hearty textures find cooling contrast in a layer of creamy cucumber yogurt. For even more traditional flavor, we’re crumbling tangy feta cheese into our simple side salad.This recipe was created in partnership with the wellness experts at WW. To learn more about WW and SmartPoints® visit ww.com',
+    calories: '620',
+    ingredients: [
+      'Pocketless Pitas',
+      'Red Onion',
+      'Persian Cucumbers',
+      'Romaine Lettuce Heart',
+      'Garlic',
+      'Plain Nonfat Greek Yogurt',
+      'Sliced Roasted Red Peppers',
+      'Feta Cheese',
+      'Red Harissa Paste',
+      'Red Wine Vinegar',
+      '15.5 -Ounce Can Chickpeas'
+    ],
+    price: 18
+  },
+  {
+    name: 'One-Pot Shrimp & Udon Noodles',
+    image:
+      'https://media.blueapron.com/recipes/22076/square_newsletter_images/1560200202-33-0024-5807/0715_FPF_Udon_3669_Square_hi_res.jpg',
+    description:
+      'This summer, we’re bringing you 12 weeks of recipes designed with busy schedules and flexibility in mind. For quick cooking (and easy cleanup!), you’ll make this dish all in one pot by bringing together tender noodles, bites of shrimp, and crisp carrots with an umami (or savory) sauce of sesame oil, worcestershire, and soy sauce.',
+    calories: '490',
+    ingredients: [
+      'Tail-On Shrimp (Peeled & Deveined)',
+      'Fresh Udon Noodles (Previously Frozen)',
+      'Cremini Mushrooms',
+      'Carrots',
+      'Lime',
+      'Mint',
+      'Roasted Peanuts',
+      'Vegetarian Worcestershire Sauce',
+      'Soy Sauce',
+      'Sugar',
+      'Sesame Oil'
+    ],
+    price: 15
+  },
+  {
+    name: 'Spicy Vegetable & Udon Stir-Fry',
+    image:
+      'https://media.blueapron.com/recipes/22122/square_newsletter_images/1561056257-33-0039-2740/0722_2PV3_Udon_3216_Square_Web_hi_res.jpg',
+    description:
+      'Pleasantly chewy udon noodles—a staple in Japanese cuisine—add exquisite texture to this quick and easy stir-fry, which also highlights crisp bok choy, snap peas, and sweet peppers. We’rebringing it all together with a sweet and spicy sauce made with miso paste, sambal oelek, and more.',
+    calories: '480',
+    ingredients: [
+      'Pasture-Raised Eggs',
+      'Fresh Udon Noodles (Previously Frozen)',
+      'Sugar Snap Peas',
+      'Baby Bok Choy',
+      'Sweet Peppers',
+      'Garlic',
+      'Sweet White Miso Paste',
+      'Soy Sauce',
+      'Sambal Oelek',
+      'Vegetable Demi-Glace',
+      'Light Brown Sugar',
+      'Black & White Sesame Seeds'
+    ],
+    price: 16
+  },
+  {
+    name: 'Southern-Spiced Chicken',
+    image:
+      'https://media.blueapron.com/recipes/22067/square_newsletter_images/1560264156-34-0005-4878/0715_2PP_Southern-Chicken_3534_Square_hi_res.jpg',
+    description:
+      'This simple dish gets a sophisticated lift from a flavorful pan sauce made with whole grain dijon, brown sugar, and demi-glace (simply reduced chicken stock), which lends rich, complex flavor to our seared chicken. It’s perfectly accompanied by classic, hearty sides of buttermilk mashed potatoes and green beans sautéed with aromatic garlic.',
+    calories: '510',
+    ingredients: [
+      'Boneless, Skinless Chicken Breasts',
+      'Golden Potatoes',
+      'Green Beans',
+      'Buttermilk',
+      'Chicken Demi-Glace',
+      'Garlic',
+      'Whole Grain Dijon Mustard',
+      'Light Brown Sugar',
+      'Southern Spice Blend (Onion Powder, Garlic Powder, Ground Yellow Mustard, Smoked Paprika & Cayenne Pepper)'
+    ],
+    price: 16
+  },
+  {
+    name: 'Seared Chicken & Buttermilk Mashed Potatoes',
+    image:
+      'https://media.blueapron.com/recipes/22168/square_newsletter_images/1560264916-35-0027-8275/0715_W1_Southern-Chicken_3523_Square_hi_res.jpg',
+    description:
+      'For deep, bold flavor in this wholesome dish, we’re featuring piquant mustard in two ways: ground yellow mustard stars in the blend of Southern-style spices our chicken is seasoned with, while whole grain dijon is at the center of our rich, tangy pan sauce spooned on top.This recipe was created in partnership with the wellness experts at WW. To learn more about WW and SmartPoints® visit ww.com',
+    calories: '510',
+    ingredients: [
+      'Boneless, Skinless Chicken Breasts',
+      'Golden Potatoes',
+      'Green Beans',
+      'Buttermilk',
+      'Chicken Demi-Glace',
+      'Garlic',
+      'Whole Grain Dijon Mustard',
+      'Light Brown Sugar',
+      'Southern Spice Blend (Onion Powder, Garlic Powder, Ground Yellow Mustard, Smoked Paprika & Cayenne Pepper)'
+    ],
+    price: 16
+  },
+  {
+    name: 'Spiced Chicken Salad',
+    image:
+      'https://media.blueapron.com/recipes/22085/square_newsletter_images/1560265708-34-0071-6426/0715_W6_Thai-Salad_3517_Square_hi_res.jpg',
+    description:
+      'We’re topping this bright, zesty salad with bites of tender chicken seared in a coating of togarashi—a favorite Japanese seasoning that highlights poppy seeds, dried orange peel, and more, whose bold flavor is delightfully contrasted by our sweet and tangy honey-lime dressing.This recipe was created in partnership with the wellness experts at WW. To learn more about WW and SmartPoints® visit ww.com',
+    calories: '480',
+    ingredients: [
+      'Chopped Chicken Breast',
+      'Romaine Lettuce Heart',
+      'Carrots',
+      'Sweet Peppers',
+      'Lime',
+      'Dried Shiitake Mushrooms',
+      'Honey',
+      'Sesame Oil',
+      'Roasted Peanuts',
+      'Crushed Red Pepper Flakes',
+      'Togarashi Seasoning (Sweet Paprika, Hot Paprika, Dried Orange Peel, Poppy Seeds, White Sesame Seeds & Black Sesame Seeds)'
+    ],
+    price: 18
+  },
+  {
+    name: 'Creamy Lemon Shrimp & Orzo',
+    image:
+      'https://media.blueapron.com/recipes/22163/square_newsletter_images/1560265095-34-0044-2584/0121_W2_Shrimp-Orzo_2553_Square_Web_hi_res.jpg',
+    description:
+      'This flavorful dish combines tender orzo pasta (a small, rice-shaped variety), sautéed zucchini, and plump shrimp coated with a vibrant mix of Calabrian chile paste, briny capers, and garlic. It’s all brought together with a touch of smooth crème fraîche and fresh lemon juice.This recipe was created in partnership with the wellness experts at WW. To learn more about WW and SmartPoints® visit ww.com',
+    calories: '480',
+    ingredients: [
+      'Tail-On Shrimp (Peeled & Deveined)',
+      'Orzo Pasta',
+      'Zucchini',
+      'Garlic',
+      'Lemon',
+      'Calabrian Chile Paste',
+      'Crème Fraîche',
+      'Capers',
+      'Grated Parmesan Cheese'
+    ],
+    price: 16
+  },
+  {
+    name: 'Za’atar Beef & Carrots',
+    image:
+      'https://media.blueapron.com/recipes/22165/square_newsletter_images/1560199920-33-0019-8851/0401_FPM_Lebanese-Beef_038_Square_Web_hi_res.jpg',
+    description:
+      'In this Middle Eastern-style recipe, a hearty duo of spiced beef and carrots is perfectly matched by jasmine rice laden with tender bites of zucchini and currants. It’s all finished with a cooling drizzle of zesty lemon-labneh sauce and fresh parsley.',
+    calories: '680',
+    ingredients: [
+      'Ground Beef',
+      'Jasmine Rice',
+      'Carrots',
+      'Zucchini',
+      'Lemon',
+      'Garlic',
+      'Parsley',
+      'Labneh Cheese',
+      'Dried Currants',
+      'Chicken Demi-Glace',
+      "Za'atar Seasoning (Sumac, Marjoram, Oregano, Thyme, Sesame Seeds & Salt)"
+    ],
+    price: 17
   }
 ]
 
