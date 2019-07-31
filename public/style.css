@@ -19,3 +19,13 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.nav-bar {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.title-header {
+  display: flex;
+  justify-content: center;
+}
