@@ -41,3 +41,18 @@ router.get('/:id/orders', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/:id/cart', async (req, res, next) => {
+  try {
+    const userCart = await Order.findOne({
+      include: [{model: Meal}],
+      where: {
+        userId: req.params.id,
+        isCart: true
+      }
+    })
+    res.json(userCart)
+  } catch (err) {
+    next(err)
+  }
+})
