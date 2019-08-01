@@ -4,6 +4,7 @@ import history from '../history'
 // action type
 const GET_USER_CART = 'GET_USER_CART'
 const ADD_MEAL_TO_CART = 'ADD_MEAL_TO_CART'
+const REMOVE_MEAL_FROM_CART = 'REMOVE_MEAL_FROM_CART'
 
 // action creator
 export const getUserCart = cart => {
@@ -19,6 +20,13 @@ export const addMealToCart = () => {
   }
 }
 
+export const removeMealFromCart = mealId => {
+  return {
+    type: REMOVE_MEAL_FROM_CART,
+    mealId
+  }
+}
+
 // thunk middleware
 export const getUserCartThunk = singleUserId => {
   return async dispatch => {
@@ -31,16 +39,33 @@ export const getUserCartThunk = singleUserId => {
   }
 }
 
-export const addMealToCartThunk = (mealId, userId) => {
+export const addMealToCartThunk = (quantity, mealId, userId) => {
   return async dispatch => {
     try {
       const newMealOrder = {
-        quantity: 1,
+        quantity,
         mealId,
         userId
       }
       await axios.post(`/api/cart`, newMealOrder)
       dispatch(addMealToCart())
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const removeMealFromCartThunk = (mealId, orderId) => {
+  return async dispatch => {
+    try {
+      const deleteInfo = {
+        mealId,
+        orderId
+      }
+      await axios.delete(`/api/cart`, {
+        data: deleteInfo
+      })
+      dispatch(removeMealFromCart(mealId))
     } catch (error) {
       console.log(error)
     }
@@ -55,6 +80,9 @@ export default function(state = userCart, action) {
   switch (action.type) {
     case GET_USER_CART:
       return action.cart
+    case REMOVE_MEAL_FROM_CART:
+      const newmeals = state.meals.filter(meal => meal.id !== action.mealId)
+      return {...state, meals: newmeals}
     default:
       return state
   }

@@ -6,11 +6,25 @@ import {connect} from 'react-redux'
 class singleMeal extends React.Component {
   constructor() {
     super()
+    this.state = {
+      quantity: 1
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(event) {
+    this.setState({
+      quantity: event.target.value
+    })
   }
 
   handleSubmit() {
-    this.props.addToCart(this.props.match.params.id, this.props.userId)
+    this.props.addToCart(
+      this.state.quantity,
+      this.props.match.params.id,
+      this.props.userId
+    )
   }
 
   componentDidMount() {
@@ -28,9 +42,17 @@ class singleMeal extends React.Component {
         <br />
         <span>${meal.price}</span>
         {this.props.isLoggedIn ? (
-          <button type="submit" onClick={this.handleSubmit}>
-            Add to Cart
-          </button>
+          <div>
+            <select onChange={this.handleChange}>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+            <button type="submit" onClick={this.handleSubmit}>
+              Add to Cart
+            </button>
+          </div>
         ) : (
           <p>Please log in to add to cart!</p>
         )}
@@ -50,7 +72,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getMeal: mealId => dispatch(getSingleMealThunk(mealId)),
-    addToCart: (mealId, userId) => dispatch(addMealToCartThunk(mealId, userId))
+    addToCart: (quantity, mealId, userId) =>
+      dispatch(addMealToCartThunk(quantity, mealId, userId))
   }
 }
 
