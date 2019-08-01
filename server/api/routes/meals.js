@@ -19,25 +19,3 @@ router.get('/:id', async (req, res, next) => {
     next(err)
   }
 })
-
-// ADD TO CART ROUTE
-router.post('/:id', async (req, res, next) => {
-  try {
-    const userCart = await Order.findOne({
-      where: {
-        userId: req.user.id,
-        isCart: true
-      }
-    })
-    const newMealOrder = {
-      quantity: 1,
-      mealId: req.params.id,
-      orderId: userCart.id
-    }
-    const addedMealOrder = await MealOrder.create(newMealOrder)
-    // UPDATE TOTAL PRICE OF ORDER
-    res.json(addedMealOrder)
-  } catch (err) {
-    next(err)
-  }
-})

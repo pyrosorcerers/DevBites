@@ -12,11 +12,10 @@ const MealOrder = db.define('mealOrder', {
   }
 })
 
-const getPrice = async mealOrder => {
-  const {price} = await Meal.findByPk(mealOrder.mealId)
-  mealOrder.price = price
+MealOrder.prototype.setNewPrice = async function() {
+  const {price} = await Meal.findByPk(this.mealId)
+  this.price = price
+  this.save()
 }
-
-MealOrder.beforeCreate(getPrice)
 
 module.exports = MealOrder
