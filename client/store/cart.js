@@ -5,6 +5,7 @@ import history from '../history'
 const GET_USER_CART = 'GET_USER_CART'
 const ADD_MEAL_TO_CART = 'ADD_MEAL_TO_CART'
 const REMOVE_MEAL_FROM_CART = 'REMOVE_MEAL_FROM_CART'
+const CHECKOUT_CART = 'CHECKOUT_CART'
 
 // action creator
 export const getUserCart = cart => {
@@ -24,6 +25,12 @@ export const removeMealFromCart = mealId => {
   return {
     type: REMOVE_MEAL_FROM_CART,
     mealId
+  }
+}
+
+export const checkoutCart = () => {
+  return {
+    type: CHECKOUT_CART
   }
 }
 
@@ -66,6 +73,21 @@ export const removeMealFromCartThunk = (mealId, orderId) => {
         data: deleteInfo
       })
       dispatch(removeMealFromCart(mealId))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const checkoutCartThunk = (orderId, totalPrice) => {
+  return async dispatch => {
+    try {
+      const updatePrice = {
+        orderId,
+        totalPrice
+      }
+      await axios.put(`/api/cart`, updatePrice)
+      dispatch(checkoutCart())
     } catch (error) {
       console.log(error)
     }

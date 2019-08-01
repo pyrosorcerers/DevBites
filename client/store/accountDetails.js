@@ -35,7 +35,7 @@ export const getSingleUserThunk = singleUserId => {
 export const getSingleUserOrderThunk = userId => {
   return async dispatch => {
     try {
-      const {data} = await axios.get(`/api/users/${userId}/orders/`)
+      const {data} = await axios.get(`/api/cart/${userId}`)
       dispatch(getSingleUserOrder(data))
     } catch (error) {
       console.log(error)

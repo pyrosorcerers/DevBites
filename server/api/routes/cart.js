@@ -31,10 +31,31 @@ router.post('/', async (req, res, next) => {
       orderId: userCart.id
     }
     const addedMealOrder = await MealOrder.create(newMealOrder)
-    // UPDATE TOTAL PRICE OF ORDER
-    // TOTAL ORDER PRICE UPDATED WHEN USER CHECKS CART
-    // PRICES ARE STILL DYNAMIC WHEN IN THE CART, FIXED WHEN ORDERED
     res.json(addedMealOrder)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.put('/', async (req, res, next) => {
+  try {
+    const userCart = await Order.findByPk(req.body.orderId)
+    userCart.totalPrice = req.body.totalPrice
+    userCart.isCart = false
+    await userCart.save()
+    const mealOrders = await MealOrder.findAll({
+      where: {
+        orderId: req.body.orderId
+      }
+    })
+    await Promise.all(
+      mealOrders.map(async mealOrder => {
+        const {price} = await Meal.findByPk(mealOrder.mealId)
+        mealOrder.price = price
+        mealOrder.save()
+      })
+    )
+    res.sendStatus(201)
   } catch (err) {
     next(err)
   }
