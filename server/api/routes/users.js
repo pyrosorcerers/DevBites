@@ -35,6 +35,7 @@ router.get('/:id/orders', async (req, res, next) => {
     const userOrders = await Order.findAll({
       include: [{model: Meal}],
       where: {
+        isCart: false,
         userId: req.params.id
       }
     })
