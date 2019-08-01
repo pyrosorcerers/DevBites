@@ -15,7 +15,11 @@ class Menu extends React.Component {
             <div key={meal.id}>
               <Link to={`/menu/${meal.id}`}>
                 <h1>{meal.name}</h1>
-                <img src={meal.image} alt="meal image" />
+                <img
+                  src={meal.image}
+                  alt="meal image"
+                  style={{width: '10rem'}}
+                />
                 <p>$ {meal.price}</p>
               </Link>
             </div>

@@ -6,6 +6,7 @@ import {Login, Signup, UserHome} from './components'
 import {me} from './store'
 import Meals from './components/Menu'
 import SingleMeal from './components/SingleMeal'
+import Cart from './components/Cart'
 
 /**
  * COMPONENT
@@ -30,7 +31,7 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
-            <Route path="/cart" component="" />
+            <Route path="/cart" component={Cart} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
