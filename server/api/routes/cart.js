@@ -1,8 +1,5 @@
 const router = require('express').Router()
 const {User, Meal, Order, MealOrder} = require('../../db/models')
-// const Orders = require('../../db/models/order')
-// const mealOrder = require('../../db/models/mealOrder')
-// const Meals = require('../../db/models/meal')
 module.exports = router
 
 router.get('/:userId', async (req, res, next) => {
@@ -38,6 +35,20 @@ router.post('/', async (req, res, next) => {
     // TOTAL ORDER PRICE UPDATED WHEN USER CHECKS CART
     // PRICES ARE STILL DYNAMIC WHEN IN THE CART, FIXED WHEN ORDERED
     res.json(addedMealOrder)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.delete('/', async (req, res, next) => {
+  try {
+    await MealOrder.destroy({
+      where: {
+        mealId: req.body.mealId,
+        orderId: req.body.orderId
+      }
+    })
+    res.sendStatus(204)
   } catch (err) {
     next(err)
   }
