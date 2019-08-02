@@ -14,7 +14,6 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.user.id)
     this.props.getUserCart(this.props.user.id)
   }
 
@@ -23,23 +22,16 @@ class Cart extends React.Component {
   }
 
   handleDeleteMeal(mealId, orderId) {
-    this.props.deleteMeal(mealId, orderId)
+    this.props.deleteMealFromCart(mealId, orderId)
   }
   render() {
     let totalPrice = 0
-    const mealOrders = []
     return (
       <div>
         <h2>List of Meals</h2>
         {this.props.cart.meals ? (
           <div>
             {this.props.cart.meals.map(meal => {
-              mealOrders.push({
-                quantity: meal.mealOrder.quantity,
-                orderId: this.props.cart.id,
-                mealId: meal.id,
-                cumulativePrice: meal.mealOrder.quantity * meal.price
-              })
               const {quantity} = meal.mealOrder
               totalPrice += meal.price * quantity
               return (
@@ -47,7 +39,7 @@ class Cart extends React.Component {
                   <h2>{meal.name}</h2>
                   <p>Quantity: {quantity}</p>
                   <p>Meal Price: ${meal.price}</p>
-                  <p>Total Price: ${quantity * meal.price}</p>
+                  <p>Total Price of Meal: ${quantity * meal.price}</p>
                   <button
                     type="button"
                     onClick={() => {
@@ -60,13 +52,7 @@ class Cart extends React.Component {
               )
             })}
             <br />
-            {mealOrders.map(order => (
-              <div key={order.mealId}>
-                MealId: {order.mealId}, OrderId{order.orderId}, Quantity:{' '}
-                {order.quantity}, MealOrder Price: {order.cumulativePrice}
-              </div>
-            ))}
-            ${totalPrice}
+            Total Price of Cart: ${totalPrice}
             <button
               type="button"
               onClick={() => {
