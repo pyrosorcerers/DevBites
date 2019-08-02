@@ -62,7 +62,7 @@ export const addMealToCartThunk = (quantity, mealId, userId) => {
   }
 }
 
-export const removeMealFromCartThunk = (mealId, orderId) => {
+export const deleteMealFromCartThunk = (mealId, orderId) => {
   return async dispatch => {
     try {
       const deleteInfo = {
@@ -102,9 +102,10 @@ export default function(state = userCart, action) {
   switch (action.type) {
     case GET_USER_CART:
       return action.cart
-    case REMOVE_MEAL_FROM_CART:
+    case REMOVE_MEAL_FROM_CART: {
       const newmeals = state.meals.filter(meal => meal.id !== action.mealId)
       return {...state, meals: newmeals}
+    }
     default:
       return state
   }
