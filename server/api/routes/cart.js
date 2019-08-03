@@ -2,6 +2,21 @@ const router = require('express').Router()
 const {User, Meal, Order, MealOrder} = require('../../db/models')
 module.exports = router
 
+router.get('/', async (req, res, next) => {
+  try {
+    const userCart = await Order.findOne({
+      include: [{model: Meal}],
+      where: {
+        userId: req.user.id,
+        isCart: true
+      }
+    })
+    res.json(userCart)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.get('/:userId', async (req, res, next) => {
   try {
     const userCart = await Order.findOne({
@@ -19,7 +34,7 @@ router.get('/:userId', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const userCart = await Order.findOne({
+    const userCart = await Order.findOrCreate({
       where: {
         userId: req.body.userId,
         isCart: true
@@ -28,10 +43,11 @@ router.post('/', async (req, res, next) => {
     const newMealOrder = {
       quantity: req.body.quantity,
       mealId: req.body.mealId,
-      orderId: userCart.id
+      orderId: userCart[0].id
     }
     const addedMealOrder = await MealOrder.create(newMealOrder)
-    res.json(addedMealOrder)
+    const addedMeal = await Meal.findByPk(req.body.mealId)
+    res.json(addedMeal)
   } catch (err) {
     next(err)
   }

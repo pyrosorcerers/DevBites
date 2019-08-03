@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-import {getSingleUserOrderThunk} from '../store/accountDetails'
+import {getLoggedInUserCartThunk} from '../store/cart'
 
 class Navbar extends React.Component {
   componentDidMount() {
-    this.props.getOrders(1)
+    this.props.getLoggedInUserCart()
   }
   render() {
     const {handleClick, isLoggedIn} = this.props
@@ -24,11 +24,7 @@ class Navbar extends React.Component {
                 Logout
               </a>
               <Link to="/menu">Menu</Link>
-              <Link to="/cart">
-                Cart{' '}
-                {this.props.singleUserOrder[0] &&
-                  this.props.singleUserOrder[0].meals.length}
-              </Link>
+              <Link to="/cart">Cart </Link>
             </div>
           ) : (
             <div>
@@ -48,26 +44,24 @@ class Navbar extends React.Component {
 /**
  * CONTAINER
  */
-const mapState = state => {
+const mapStateToProps = state => {
   return {
     isLoggedIn: !!state.user.id,
     userId: state.user.id,
-    singleUserOrder: state.singleUser
+    userCart: state.userCart
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     handleClick() {
       dispatch(logout())
     },
-    getOrders(userId) {
-      dispatch(getSingleUserOrderThunk(userId))
-    }
+    getLoggedInUserCart: () => dispatch(getLoggedInUserCartThunk())
   }
 }
 
-export default connect(mapState, mapDispatch)(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
 
 /**
  * PROP TYPES

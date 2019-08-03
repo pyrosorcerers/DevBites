@@ -207,36 +207,36 @@ const mealOrders = [
 ]
 
 const orders = [
-  {id: 1, userId: 1, isCart: true},
-  {id: 2, userId: 2, isCart: true},
-  {id: 3, userId: 2, isCart: false},
-  {id: 4, userId: 2, isCart: false},
-  {id: 5, userId: 3, isCart: true},
-  {id: 6, userId: 3, isCart: false},
-  {id: 7, userId: 3, isCart: false},
-  {id: 8, userId: 3, isCart: false},
-  {id: 9, userId: 3, isCart: false},
-  {id: 10, userId: 3, isCart: false},
-  {id: 11, userId: 4, isCart: true},
-  {id: 12, userId: 4, isCart: false},
-  {id: 13, userId: 5, isCart: false},
-  {id: 14, userId: 5, isCart: true},
-  {id: 15, userId: 6, isCart: true},
-  {id: 16, userId: 6, isCart: false},
-  {id: 17, userId: 6, isCart: false},
-  {id: 18, userId: 6, isCart: false},
-  {id: 19, userId: 7, isCart: true},
-  {id: 20, userId: 7, isCart: false},
-  {id: 21, userId: 8, isCart: true},
-  {id: 22, userId: 8, isCart: false},
-  {id: 23, userId: 9, isCart: true},
-  {id: 24, userId: 9, isCart: false},
-  {id: 25, userId: 9, isCart: false},
-  {id: 26, userId: 9, isCart: false},
-  {id: 27, userId: 9, isCart: false},
-  {id: 28, userId: 10, isCart: true},
-  {id: 29, userId: 10, isCart: false},
-  {id: 30, userId: 10, isCart: false}
+  {userId: 1, isCart: true},
+  {userId: 2, isCart: true},
+  {userId: 2, isCart: false},
+  {userId: 2, isCart: false},
+  {userId: 3, isCart: true},
+  {userId: 3, isCart: false},
+  {userId: 3, isCart: false},
+  {userId: 3, isCart: false},
+  {userId: 3, isCart: false},
+  {userId: 3, isCart: false},
+  {userId: 4, isCart: true},
+  {userId: 4, isCart: false},
+  {userId: 5, isCart: false},
+  {userId: 5, isCart: true},
+  {userId: 6, isCart: true},
+  {userId: 6, isCart: false},
+  {userId: 6, isCart: false},
+  {userId: 6, isCart: false},
+  {userId: 7, isCart: true},
+  {userId: 7, isCart: false},
+  {userId: 8, isCart: true},
+  {userId: 8, isCart: false},
+  {userId: 9, isCart: true},
+  {userId: 9, isCart: false},
+  {userId: 9, isCart: false},
+  {userId: 9, isCart: false},
+  {userId: 9, isCart: false},
+  {userId: 10, isCart: true},
+  {userId: 10, isCart: false},
+  {userId: 10, isCart: false}
 ]
 
 const users = [
@@ -694,7 +694,6 @@ const users = [
 
 const meals = [
   {
-    id: 1,
     name: 'Ribs',
     image:
       'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/7/21/3/FNM_090115-Best-Barbecue-Ribs-Ever-Recipe_s4x3.jpg.rend.hgtvcom.826.620.suffix/1437691887821.jpeg',
@@ -717,7 +716,6 @@ const meals = [
     price: '10'
   },
   {
-    id: 2,
     name: 'Spaghetti alla Carbonara',
     image:
       'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2009/6/12/2/FO1D41_23785_s4x3.jpg.rend.hgtvcom.826.620.suffix/1431766590243.jpeg',
@@ -737,7 +735,6 @@ const meals = [
     price: '11'
   },
   {
-    id: 3,
     name: 'Grilled Steak',
     image:
       'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2010/4/26/0/FNM_060110-Bobby-Grilling-013_s4x3.jpg.rend.hgtvcom.826.620.suffix/1382539247827.jpeg',
@@ -751,7 +748,6 @@ const meals = [
     price: '12'
   },
   {
-    id: 4,
     name: 'Seared Salmon & Miso-Butter Glaze',
     image:
       'https://media.blueapron.com/recipes/22171/square_newsletter_images/1562687446-33-0025-8899/0805_2PF-Salmon_4441_SQ_hi_res.jpg',
@@ -772,7 +768,6 @@ const meals = [
     price: '14'
   },
   {
-    id: 5,
     name: 'Caribbean-Spiced Chicken Thighs',
     image:
       'https://media.blueapron.com/recipes/22318/square_newsletter_images/1563207469-34-0004-6645/0415_2PM_Caribbean-Chicken_0017_Square_hi_res.jpg',
@@ -794,7 +789,6 @@ const meals = [
     price: '15'
   },
   {
-    id: 6,
     name: 'Caramelized Onion & Cheddar Beyond Burgers',
     image:
       'https://media.blueapron.com/recipes/22488/square_newsletter_images/1563983848-34-0049-6496/0819_2PRE07_White-Cheddar-Burger_4748_sq_Web_hi_res.jpg',
@@ -816,7 +810,6 @@ const meals = [
     price: '16'
   },
   {
-    id: 7,
     name: 'Chipotle Beef Taco Salad',
     image:
       'https://media.blueapron.com/recipes/22133/square_newsletter_images/1561058164-33-0066-3858/0722_W5_Beef-Salad_3176_Square_Web_hi_res.jpg',
@@ -837,7 +830,6 @@ const meals = [
     price: 17
   },
   {
-    id: 8,
     name: 'Creamy Chipotle Chicken',
     image:
       'https://media.blueapron.com/recipes/22118/square_newsletter_images/1561055853-33-0033-8885/0722_2PRE07_Chicken_3275_Square_Web_hi_res.jpg',
@@ -859,7 +851,6 @@ const meals = [
     price: 19
   },
   {
-    id: 9,
     name: 'Southern-Style Chicken & Corn',
     image:
       'https://media.blueapron.com/recipes/22196/square_newsletter_images/1561056691-34-0045-6453/0722_W1_Chicken_3209_Square_Web_hi_res.jpg',
@@ -881,7 +872,6 @@ const meals = [
     price: 18
   },
   {
-    id: 10,
     name: 'Spicy Soy-Glazed Chicken Thighs',
     image:
       'https://media.blueapron.com/recipes/22194/square_newsletter_images/1561063776-34-0007-7894/0722_FPRE05_Chicken_3302_Square_Web_hi_res.jpg',
@@ -903,7 +893,6 @@ const meals = [
     price: 18
   },
   {
-    id: 11,
     name: 'Sweet Chili-Glazed Salmon',
     image:
       'https://media.blueapron.com/recipes/22200/square_newsletter_images/1561057392-33-0051-3448/0722_W02_Salmon_3237_Square_Web_hi_res.jpg',
@@ -924,7 +913,6 @@ const meals = [
     price: 16
   },
   {
-    id: 12,
     name: 'Smoky Chicken & Honey Butter',
     image:
       'https://media.blueapron.com/recipes/22115/square_newsletter_images/1561055081-33-0025-8001/0722_2PP_Chicken_3199_Square_Web_hi_res.jpg',
@@ -946,7 +934,6 @@ const meals = [
     price: 19
   },
   {
-    id: 13,
     name: 'Mexican-Spiced Chicken & Lime Sour Cream',
     image:
       'https://media.blueapron.com/recipes/22075/square_newsletter_images/1560199686-34-0012-5929/0715_FPP_Chicken_3655_Square_hi_res.jpg',
@@ -969,7 +956,6 @@ const meals = [
     price: 19
   },
   {
-    id: 14,
     name: 'Spicy Beef & Broccoli',
     image:
       'https://media.blueapron.com/recipes/22227/square_newsletter_images/1560199517-33-0012-3461/0715_FPV_Beef-Broccoli_3636_Square_hi_res.jpg',
@@ -992,7 +978,6 @@ const meals = [
     price: 16
   },
   {
-    id: 15,
     name: 'Chesapeake-Spiced Tilapia',
     image:
       'https://media.blueapron.com/recipes/22221/square_newsletter_images/1560265433-34-0061-3837/0325_WW04_Cajun-Tilapia_063_Square_Web_hi_res.jpg',
@@ -1013,7 +998,6 @@ const meals = [
     price: 15
   },
   {
-    id: 16,
     name: 'Chicken & Black Bean Burrito Bowls',
     image:
       'https://media.blueapron.com/recipes/22127/square_newsletter_images/1561064598-34-0020-8572/0722_FPV_Burrito-Bowl_3314_Square_Web_hi_res.jpg',
@@ -1036,7 +1020,6 @@ const meals = [
     price: 18
   },
   {
-    id: 17,
     name: 'Glazed Chicken',
     image:
       'https://media.blueapron.com/recipes/22117/square_newsletter_images/1561054506-33-0018-8859/0722_2PM_Chicken_3264_Square_Web_hi_res.jpg',
@@ -1059,7 +1042,6 @@ const meals = [
     price: 18
   },
   {
-    id: 18,
     name: 'Smoky Chickpea Gyros',
     image:
       'https://media.blueapron.com/recipes/22074/square_newsletter_images/1560264625-35-0019-4630/0715_2PV3_Gyros_3512_Square_hi_res.jpg',
@@ -1082,7 +1064,6 @@ const meals = [
     price: 18
   },
   {
-    id: 19,
     name: 'Pork Chops & Buttermilk Mashed Potatoes',
     image:
       'https://media.blueapron.com/recipes/22079/square_newsletter_images/1560199148-33-0001-1158/0715_FP5_Pork-Chops_3619_Square_hi_res.jpg',
@@ -1107,7 +1088,6 @@ const meals = [
     price: 18
   },
   {
-    id: 20,
     name: 'Pesto Fusilli Pasta',
     image:
       'https://media.blueapron.com/recipes/22072/square_newsletter_images/1560200636-33-0038-1704/0715_2PV1_Pesto-Pasta_3584_Square_hi_res.jpg',
@@ -1128,7 +1108,6 @@ const meals = [
     price: 15
   },
   {
-    id: 21,
     name: 'Chicken Lettuce Cups',
     image:
       'https://media.blueapron.com/recipes/22070/square_newsletter_images/1560264751-34-0028-2239/0715_2PRE07_Lettuce-Wraps_3609_Square_hi_res.jpg',
@@ -1151,7 +1130,6 @@ const meals = [
     price: 16
   },
   {
-    id: 22,
     name: 'Calabrian Shrimp & Orzo',
     image:
       'https://media.blueapron.com/recipes/22162/square_newsletter_images/1560264380-34-0013-7107/0121_2PF_Shrimp-Orzo_2549_Square_Web_hi_res.jpg',
@@ -1172,7 +1150,6 @@ const meals = [
     price: 19
   },
   {
-    id: 23,
     name: 'Cajun-Style Pork & Farro Salad',
     image:
       'https://media.blueapron.com/recipes/22084/square_newsletter_images/1560265580-35-0037-9848/0715_W5_Cajun-Pork_3589_Square_hi_res.jpg',
@@ -1194,7 +1171,6 @@ const meals = [
     price: 15
   },
   {
-    id: 24,
     name: 'Summer Vegetable Pizza',
     image:
       'https://media.blueapron.com/recipes/22195/square_newsletter_images/1561064186-34-0016-5981/0722_FPR6_Pizza_3368_Square_Web_hi_res.jpg',
@@ -1220,7 +1196,6 @@ const meals = [
     price: 15
   },
   {
-    id: 25,
     name: 'Cumin-Sichuan Peppercorn Beef',
     image:
       'https://media.blueapron.com/recipes/22164/square_newsletter_images/1560200479-34-0030-3823/0128_2PRE08_Cumin-Beef-Noodles_Sesame_013_201_Square_Crop_hi_res.jpg',
@@ -1240,7 +1215,6 @@ const meals = [
     price: 17
   },
   {
-    id: 26,
     name: 'Seared Pork Chops & Chipotle Mayo',
     image:
       'https://media.blueapron.com/recipes/22069/square_newsletter_images/1560264482-35-0014-9838/0715_2PM_Prok_3600_Square_hi_res.jpg',
@@ -1261,7 +1235,6 @@ const meals = [
     price: 17
   },
   {
-    id: 27,
     name: 'Smoked Gouda & Monterey Jack Grilled Cheese',
     image:
       'https://media.blueapron.com/recipes/22073/square_newsletter_images/1560457340-34-0010-1940/0715_2PV2_Grilled-Cheese_3575_Square_hi_res.jpg',
@@ -1283,7 +1256,6 @@ const meals = [
     price: 17
   },
   {
-    id: 28,
     name: 'Harissa Chickpea Gyros',
     image:
       'https://media.blueapron.com/recipes/22167/square_newsletter_images/1560265297-34-0052-4933/0715_W3_Gyros_3500_Square_hi_res.jpg',
@@ -1306,7 +1278,6 @@ const meals = [
     price: 18
   },
   {
-    id: 29,
     name: 'One-Pot Shrimp & Udon Noodles',
     image:
       'https://media.blueapron.com/recipes/22076/square_newsletter_images/1560200202-33-0024-5807/0715_FPF_Udon_3669_Square_hi_res.jpg',
@@ -1329,7 +1300,6 @@ const meals = [
     price: 15
   },
   {
-    id: 30,
     name: 'Spicy Vegetable & Udon Stir-Fry',
     image:
       'https://media.blueapron.com/recipes/22122/square_newsletter_images/1561056257-33-0039-2740/0722_2PV3_Udon_3216_Square_Web_hi_res.jpg',
@@ -1353,7 +1323,6 @@ const meals = [
     price: 16
   },
   {
-    id: 31,
     name: 'Southern-Spiced Chicken',
     image:
       'https://media.blueapron.com/recipes/22067/square_newsletter_images/1560264156-34-0005-4878/0715_2PP_Southern-Chicken_3534_Square_hi_res.jpg',
@@ -1374,7 +1343,6 @@ const meals = [
     price: 16
   },
   {
-    id: 32,
     name: 'Seared Chicken & Buttermilk Mashed Potatoes',
     image:
       'https://media.blueapron.com/recipes/22168/square_newsletter_images/1560264916-35-0027-8275/0715_W1_Southern-Chicken_3523_Square_hi_res.jpg',
@@ -1395,7 +1363,6 @@ const meals = [
     price: 16
   },
   {
-    id: 33,
     name: 'Spiced Chicken Salad',
     image:
       'https://media.blueapron.com/recipes/22085/square_newsletter_images/1560265708-34-0071-6426/0715_W6_Thai-Salad_3517_Square_hi_res.jpg',
@@ -1418,7 +1385,6 @@ const meals = [
     price: 18
   },
   {
-    id: 34,
     name: 'Creamy Lemon Shrimp & Orzo',
     image:
       'https://media.blueapron.com/recipes/22163/square_newsletter_images/1560265095-34-0044-2584/0121_W2_Shrimp-Orzo_2553_Square_Web_hi_res.jpg',
@@ -1439,7 +1405,6 @@ const meals = [
     price: 16
   },
   {
-    id: 35,
     name: 'Za’atar Beef & Carrots',
     image:
       'https://media.blueapron.com/recipes/22165/square_newsletter_images/1560199920-33-0019-8851/0401_FPM_Lebanese-Beef_038_Square_Web_hi_res.jpg',
@@ -1462,7 +1427,6 @@ const meals = [
     price: 17
   },
   {
-    id: 36,
     name: 'Sour Cherry Salmon',
     image:
       'https://media.blueapron.com/recipes/22124/square_newsletter_images/1561065191-34-0027-0651/0722_FPF_Salmon_3355_Square_Web_hi_res.jpg',

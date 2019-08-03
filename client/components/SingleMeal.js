@@ -1,6 +1,6 @@
 import React from 'react'
 import {getSingleMealThunk} from '../store/singleMeal'
-import {addMealToCartThunk} from '../store/cart'
+import {getLoggedInUserCartThunk, addMealToCartThunk} from '../store/cart'
 import {connect} from 'react-redux'
 
 class singleMeal extends React.Component {
@@ -8,6 +8,7 @@ class singleMeal extends React.Component {
     super()
     this.state = {
       quantity: 1
+      // disabledButton: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -20,6 +21,9 @@ class singleMeal extends React.Component {
   }
 
   handleSubmit() {
+    // this.setState({
+    //   disabledButton: true
+    // })
     this.props.addToCart(
       this.state.quantity,
       this.props.match.params.id,
@@ -29,7 +33,9 @@ class singleMeal extends React.Component {
 
   componentDidMount() {
     this.props.getMeal(this.props.match.params.id)
+    this.props.getLoggedInUserCart()
   }
+
   render() {
     const meal = this.props.singleMeal
     return (
@@ -49,7 +55,16 @@ class singleMeal extends React.Component {
               <option>3</option>
               <option>4</option>
             </select>
-            <button type="submit" onClick={this.handleSubmit}>
+            <button
+              type="submit"
+              onClick={this.handleSubmit}
+              disabled={
+                this.props.userCart &&
+                this.props.userCart.meals.some(
+                  cartItem => cartItem.id === meal.id
+                )
+              }
+            >
               Add to Cart
             </button>
           </div>
@@ -65,13 +80,15 @@ const mapStateToProps = state => {
   return {
     singleMeal: state.singleMeal,
     isLoggedIn: !!state.user.id,
-    userId: state.user.id
+    userId: state.user.id,
+    userCart: state.userCart
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     getMeal: mealId => dispatch(getSingleMealThunk(mealId)),
+    getLoggedInUserCart: () => dispatch(getLoggedInUserCartThunk()),
     addToCart: (quantity, mealId, userId) =>
       dispatch(addMealToCartThunk(quantity, mealId, userId))
   }
