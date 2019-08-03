@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {
-  getUserCartThunk,
+  getLoggedInUserCartThunk,
   deleteMealFromCartThunk,
   checkoutCartThunk
 } from '../store/cart'
@@ -14,7 +14,7 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getUserCart(this.props.user.id)
+    this.props.getLoggedInUserCart(this.props.user.id)
   }
 
   handleCheckoutCart(orderId, totalPrice) {
@@ -24,12 +24,20 @@ class Cart extends React.Component {
   handleDeleteMeal(mealId, orderId) {
     this.props.deleteMealFromCart(mealId, orderId)
   }
+
   render() {
     let totalPrice = 0
+    if (!this.props.cart)
+      return (
+        <div>
+          <h2>Shopping Cart</h2>
+          <div>Your DevBites Cart is empty.</div>
+        </div>
+      )
     return (
       <div>
-        <h2>List of Meals</h2>
-        {this.props.cart.meals ? (
+        <h2>Shopping Cart</h2>
+        {this.props.cart && this.props.cart.meals ? (
           <div>
             {this.props.cart.meals.map(meal => {
               const {quantity} = meal.mealOrder
@@ -53,6 +61,7 @@ class Cart extends React.Component {
             })}
             <br />
             Total Price of Cart: ${totalPrice}
+            <br />
             <button
               type="button"
               onClick={() => {
@@ -79,7 +88,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUserCart: userId => dispatch(getUserCartThunk(userId)),
+    getLoggedInUserCart: userId => dispatch(getLoggedInUserCartThunk(userId)),
     deleteMealFromCart: (mealId, orderId) =>
       dispatch(deleteMealFromCartThunk(mealId, orderId)),
     checkoutCart: (orderId, totalPrice) =>

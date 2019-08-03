@@ -7,7 +7,7 @@ import {getSingleUserOrderThunk} from '../store/accountDetails'
 
 class Navbar extends React.Component {
   componentDidMount() {
-    this.props.getOrders(1)
+    // this.props.getOrders(1)
   }
   render() {
     const {handleClick, isLoggedIn} = this.props

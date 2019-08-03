@@ -3,11 +3,19 @@ import history from '../history'
 
 // action type
 const GET_USER_CART = 'GET_USER_CART'
+const GET_LOGGED_IN_USER_CART = 'GET_LOGGED_IN_USER_CART'
 const ADD_MEAL_TO_CART = 'ADD_MEAL_TO_CART'
 const REMOVE_MEAL_FROM_CART = 'REMOVE_MEAL_FROM_CART'
 const CHECKOUT_CART = 'CHECKOUT_CART'
 
 // action creator
+export const getLoggedInUserCart = cart => {
+  return {
+    type: GET_LOGGED_IN_USER_CART,
+    cart
+  }
+}
+
 export const getUserCart = cart => {
   return {
     type: GET_USER_CART,
@@ -15,9 +23,10 @@ export const getUserCart = cart => {
   }
 }
 
-export const addMealToCart = () => {
+export const addMealToCart = mealId => {
   return {
-    type: ADD_MEAL_TO_CART
+    type: ADD_MEAL_TO_CART,
+    mealId
   }
 }
 
@@ -35,9 +44,21 @@ export const checkoutCart = () => {
 }
 
 // thunk middleware
+export const getLoggedInUserCartThunk = () => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.get(`/api/cart/`)
+      dispatch(getLoggedInUserCart(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 export const getUserCartThunk = singleUserId => {
   return async dispatch => {
     try {
+      console.log('this is inside the thunk: ', singleUserId)
       const {data} = await axios.get(`/api/cart/${singleUserId}`)
       dispatch(getUserCart(data))
     } catch (error) {
@@ -55,7 +76,8 @@ export const addMealToCartThunk = (quantity, mealId, userId) => {
         userId
       }
       await axios.post(`/api/cart`, newMealOrder)
-      dispatch(addMealToCart())
+      dispatch(addMealToCart(mealId))
+      history.push('/addedToCart')
     } catch (error) {
       console.log(error)
     }
@@ -88,6 +110,7 @@ export const checkoutCartThunk = (orderId, totalPrice) => {
       }
       await axios.put(`/api/cart`, updatePrice)
       dispatch(checkoutCart())
+      history.push('/orderSubmitted')
     } catch (error) {
       console.log(error)
     }
@@ -100,6 +123,8 @@ const userCart = {}
 
 export default function(state = userCart, action) {
   switch (action.type) {
+    case GET_LOGGED_IN_USER_CART:
+      return action.cart
     case GET_USER_CART:
       return action.cart
     case REMOVE_MEAL_FROM_CART: {
