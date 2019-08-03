@@ -58,8 +58,8 @@ export const getLoggedInUserCartThunk = () => {
 export const getUserCartThunk = singleUserId => {
   return async dispatch => {
     try {
-      console.log('this is inside the thunk: ', singleUserId)
       const {data} = await axios.get(`/api/cart/${singleUserId}`)
+      console.log(data)
       dispatch(getUserCart(data))
     } catch (error) {
       console.log(error)
