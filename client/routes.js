@@ -7,8 +7,9 @@ import {me} from './store'
 import Meals from './components/Menu'
 import SingleMeal from './components/SingleMeal'
 import Cart from './components/Cart'
+import AccountDetails from './components/AccountDetails'
 import OrderSubmitted from './components/OrderSubmitted'
-import addedToCart from './components/addedToCart'
+import AddedToCart from './components/AddedToCart'
 
 /**
  * COMPONENT
@@ -35,7 +36,8 @@ class Routes extends Component {
             <Route path="/home" component={UserHome} />
             <Route path="/cart" component={Cart} />
             <Route path="/orderSubmitted" component={OrderSubmitted} />
-            <Route path="/addedToCart" component={addedToCart} />
+            <Route path="/addedToCart" component={AddedToCart} />
+            <Route path="/accountDetails" component={AccountDetails} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

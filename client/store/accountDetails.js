@@ -3,6 +3,7 @@ import history from '../history'
 
 // action type
 const GET_SINGLE_USER = 'GET_SINGLE_USER'
+const GET_USER_ORDERS = 'GET_USER_ORDERS'
 const SINGLE_USER_ORDER = 'SINGLE_USER_ORDER'
 
 // action creator
@@ -17,6 +18,13 @@ export const getSingleUserOrder = order => {
   return {
     type: SINGLE_USER_ORDER,
     order
+  }
+}
+
+export const getUserOrders = orders => {
+  return {
+    type: GET_USER_ORDERS,
+    orders
   }
 }
 
@@ -43,17 +51,30 @@ export const getSingleUserOrderThunk = userId => {
   }
 }
 
+export const getUserOrdersThunk = () => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.get(`/api/users/orders`)
+      dispatch(getUserOrders(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 // reducer
 // export to store/index.js combineReducer
-const singleUser = {}
+const orders = []
 
-export default function(state = singleUser, action) {
+export default function(state = orders, action) {
   switch (action.type) {
-    case GET_SINGLE_USER:
-      return {...state, ...action.singleUser}
-    case SINGLE_USER_ORDER:
-      // return {...state, ...action.order};
-      return action.order
+    // case GET_SINGLE_USER:
+    //   return {...state, ...action.singleUser}
+    case GET_USER_ORDERS:
+      return action.orders
+    // case SINGLE_USER_ORDER:
+    // return {...state, ...action.order};
+    //   return action.order
     default:
       return state
   }

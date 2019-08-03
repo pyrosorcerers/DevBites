@@ -20,6 +20,22 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/orders', async (req, res, next) => {
+  try {
+    const userOrders = await Order.findAll({
+      include: [{model: Meal}],
+      where: {
+        isCart: false,
+        userId: req.user.id
+      },
+      order: [['updatedAt', 'DESC']]
+    })
+    res.json(userOrders)
+  } catch (err) {
+    next(err)
+  }
+})
+
 // is the right user gateway?
 router.get('/:id', async (req, res, next) => {
   try {
