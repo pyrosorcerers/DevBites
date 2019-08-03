@@ -5,6 +5,7 @@ import {
   deleteMealFromCartThunk,
   checkoutCartThunk
 } from '../store/cart'
+import {Link} from 'react-router-dom'
 
 class Cart extends React.Component {
   constructor() {
@@ -32,45 +33,69 @@ class Cart extends React.Component {
         <div>
           <h2>Shopping Cart</h2>
           <div>Your DevBites Cart is empty.</div>
+          <Link to="menu">
+            <button type="button">Go to Menus</button>
+          </Link>
         </div>
       )
     return (
       <div>
         <h2>Shopping Cart</h2>
         {this.props.cart && this.props.cart.meals ? (
-          <div>
-            {this.props.cart.meals.map(meal => {
-              const {quantity} = meal.mealOrder
-              totalPrice += meal.price * quantity
-              return (
-                <div key={meal.id}>
-                  <h2>{meal.name}</h2>
-                  <p>Quantity: {quantity}</p>
-                  <p>Meal Price: ${meal.price}</p>
-                  <p>Total Price of Meal: ${quantity * meal.price}</p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      this.handleDeleteMeal(meal.id, this.props.cart.id)
+          this.props.cart.meals.length === 0 ? (
+            <div>
+              <div>Your DevBites Cart is empty.</div>
+              <Link to="menu">
+                <button type="button">Go to Menus</button>
+              </Link>
+            </div>
+          ) : (
+            <div>
+              {this.props.cart.meals.map(meal => {
+                const {quantity} = meal.mealOrder
+                totalPrice += meal.price * quantity
+                return (
+                  <div
+                    key={meal.id}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center'
                     }}
                   >
-                    Delete
-                  </button>
-                </div>
-              )
-            })}
-            <br />
-            Total Price of Cart: ${totalPrice}
-            <br />
-            <button
-              type="button"
-              onClick={() => {
-                this.handleCheckoutCart(this.props.cart.id, totalPrice)
-              }}
-            >
-              Checkout
-            </button>
-          </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        this.handleDeleteMeal(meal.id, this.props.cart.id)
+                      }}
+                      style={{marginTop: '.3rem'}}
+                    >
+                      Delete
+                    </button>
+                    <h4 style={{margin: '0.5rem', marginRight: '2rem'}}>
+                      {meal.name}
+                    </h4>
+                    <p style={{margin: '0.5rem', marginRight: '2rem'}}>
+                      Quantity: {quantity}
+                    </p>
+                    <p style={{margin: '0.5rem', marginRight: '2rem'}}>
+                      Meal Price: ${meal.price}
+                    </p>
+                  </div>
+                )
+              })}
+              <br />
+              Total Price of Cart: ${totalPrice}
+              <br />
+              <button
+                type="button"
+                onClick={() => {
+                  this.handleCheckoutCart(this.props.cart.id, totalPrice)
+                }}
+              >
+                Checkout
+              </button>
+            </div>
+          )
         ) : (
           <div> Loading....</div>
         )}

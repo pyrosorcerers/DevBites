@@ -23,10 +23,10 @@ export const getUserCart = cart => {
   }
 }
 
-export const addMealToCart = mealId => {
+export const addMealToCart = meal => {
   return {
     type: ADD_MEAL_TO_CART,
-    mealId
+    meal
   }
 }
 
@@ -75,8 +75,8 @@ export const addMealToCartThunk = (quantity, mealId, userId) => {
         mealId,
         userId
       }
-      await axios.post(`/api/cart`, newMealOrder)
-      dispatch(addMealToCart(mealId))
+      const {data} = await axios.post(`/api/cart`, newMealOrder)
+      dispatch(addMealToCart(data))
       history.push('/addedToCart')
     } catch (error) {
       console.log(error)

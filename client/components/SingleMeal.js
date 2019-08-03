@@ -59,7 +59,7 @@ class singleMeal extends React.Component {
               type="submit"
               onClick={this.handleSubmit}
               disabled={
-                this.props.userCart.meals &&
+                this.props.userCart &&
                 this.props.userCart.meals.some(
                   cartItem => cartItem.id === meal.id
                 )
