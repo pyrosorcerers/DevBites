@@ -47,7 +47,11 @@ router.post('/', async (req, res, next) => {
     }
     const addedMealOrder = await MealOrder.create(newMealOrder)
     const addedMeal = await Meal.findByPk(req.body.mealId)
-    res.json(addedMeal)
+    const response = {
+      addedMeal,
+      addedMealOrder
+    }
+    res.json(response)
   } catch (err) {
     next(err)
   }
