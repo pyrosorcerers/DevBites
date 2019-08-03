@@ -24,7 +24,10 @@ class Navbar extends React.Component {
                 Logout
               </a>
               <Link to="/menu">Menu</Link>
-              <Link to="/cart">Cart </Link>
+              <Link to="/cart">
+                Cart{' '}
+                {this.props.userCart.meals && this.props.userCart.meals.length}
+              </Link>
             </div>
           ) : (
             <div>
