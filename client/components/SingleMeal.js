@@ -60,9 +60,10 @@ class singleMeal extends React.Component {
               onClick={this.handleSubmit}
               disabled={
                 this.props.userCart &&
-                this.props.userCart.meals.some(
-                  cartItem => cartItem.id === meal.id
-                )
+                (this.props.userCart.meals &&
+                  this.props.userCart.meals.some(
+                    cartItem => cartItem.id === meal.id
+                  ))
               }
             >
               Add to Cart

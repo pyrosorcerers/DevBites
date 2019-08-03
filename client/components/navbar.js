@@ -26,7 +26,9 @@ class Navbar extends React.Component {
               <Link to="/menu">Menu</Link>
               <Link to="/cart">
                 Cart{' '}
-                {this.props.userCart.meals && this.props.userCart.meals.length}
+                {this.props.userCart &&
+                  (this.props.userCart.meals &&
+                    this.props.userCart.meals.length)}
               </Link>
             </div>
           ) : (
