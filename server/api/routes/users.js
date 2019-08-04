@@ -5,13 +5,23 @@ const {User, Meal, Order, MealOrder} = require('../../db/models')
 // const Meals = require('../../db/models/meal')
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+const authorizeAdmin = (req, res, next) => {
+  if (req.user.isAdmin) next()
+  else {
+    res.json('No')
+  }
+}
+
+const authorizeCorrectUser = (req, res, next) => {
+  if (req.user.id === Number(req.params.id)) next()
+  else {
+    res.json('No')
+  }
+}
+
+router.get('/', authorizeAdmin, async (req, res, next) => {
   try {
-    //req.user.isadmin (ADMIN GATEWAY)
     const users = await User.findAll({
-      // explicitly select only the id and email fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
       attributes: ['id', 'email']
     })
     res.json(users)
@@ -36,8 +46,7 @@ router.get('/orders', async (req, res, next) => {
   }
 })
 
-// is the right user gateway?
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', authorizeCorrectUser, async (req, res, next) => {
   try {
     const singleUser = await User.findByPk(req.params.id)
     res.json(singleUser)
@@ -46,7 +55,7 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.get('/:id/orders', async (req, res, next) => {
+router.get('/:id/orders', authorizeCorrectUser, async (req, res, next) => {
   try {
     const userOrders = await Order.findAll({
       include: [{model: Meal}],

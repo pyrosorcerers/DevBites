@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Meal, Order, MealOrder} = require('../../db/models')
+const {Meal, Order, MealOrder} = require('../../db/models')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -48,6 +48,7 @@ router.post('/', async (req, res, next) => {
     const addedMealOrder = await MealOrder.create(newMealOrder)
     const addedMeal = await Meal.findByPk(req.body.mealId)
     const response = {
+      cart: userCart[0],
       addedMeal,
       addedMealOrder
     }

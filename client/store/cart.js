@@ -24,9 +24,10 @@ export const getUserCart = cart => {
   }
 }
 
-export const addMealToCart = (meal, mealOrder) => {
+export const addMealToCart = (cart, meal, mealOrder) => {
   return {
     type: ADD_MEAL_TO_CART,
+    cart,
     meal,
     mealOrder
   }
@@ -78,7 +79,7 @@ export const addMealToCartThunk = (quantity, mealId, userId) => {
         userId
       }
       const {data} = await axios.post(`/api/cart`, newMealOrder)
-      dispatch(addMealToCart(data.addedMeal, data.addedMealOrder))
+      dispatch(addMealToCart(data.cart, data.addedMeal, data.addedMealOrder))
       history.push('/addedToCart')
     } catch (error) {
       console.log(error)
@@ -129,8 +130,13 @@ export default function(state = userCart, action) {
       return action.cart
     case ADD_MEAL_TO_CART: {
       const newmeal = {...action.meal, mealOrder: action.mealOrder}
-      const newmeals = [...state.meals, newmeal]
-      return {...state, meals: newmeals}
+      if (!state) {
+        const newmeals = [newmeal]
+        return {...action.cart, meals: newmeals}
+      } else {
+        const newmeals = [...state.meals, newmeal]
+        return {...state, meals: newmeals}
+      }
     }
     case REMOVE_MEAL_FROM_CART: {
       const newmeals = state.meals.filter(meal => meal.id !== action.mealId)
