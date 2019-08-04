@@ -8,6 +8,7 @@ const GET_LOGGED_IN_USER_CART = 'GET_LOGGED_IN_USER_CART'
 const ADD_MEAL_TO_CART = 'ADD_MEAL_TO_CART'
 const REMOVE_MEAL_FROM_CART = 'REMOVE_MEAL_FROM_CART'
 const CHECKOUT_CART = 'CHECKOUT_CART'
+const EDIT_MEAL_QUANTITY = 'EDIT_MEAL_QUANTITY'
 
 // action creator
 export const getLoggedInUserCart = cart => {
@@ -46,6 +47,14 @@ export const checkoutCart = () => {
   }
 }
 
+export const editMealQuantity = (mealId, quantity) => {
+  return {
+    type: EDIT_MEAL_QUANTITY,
+    mealId,
+    quantity
+  }
+}
+
 // thunk middleware
 export const getLoggedInUserCartThunk = () => {
   return async dispatch => {
@@ -62,7 +71,6 @@ export const getUserCartThunk = singleUserId => {
   return async dispatch => {
     try {
       const {data} = await axios.get(`/api/cart/${singleUserId}`)
-      console.log(data)
       dispatch(getUserCart(data))
     } catch (error) {
       console.log(error)
@@ -120,6 +128,21 @@ export const checkoutCartThunk = (orderId, totalPrice) => {
   }
 }
 
+export const editMealCartThunk = (mealId, orderId, quantity) => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.put('/api/cart/edit', {
+        mealId,
+        orderId,
+        quantity
+      })
+      dispatch(editMealQuantity(mealId, quantity))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
 const userCart = {}
 
 export default function(state = userCart, action) {
@@ -141,6 +164,20 @@ export default function(state = userCart, action) {
     case REMOVE_MEAL_FROM_CART: {
       const newmeals = state.meals.filter(meal => meal.id !== action.mealId)
       return {...state, meals: newmeals}
+    }
+    case EDIT_MEAL_QUANTITY: {
+      const cart = {...state}
+      cart.meals = [...state.meals]
+      let mealIdx = null
+      cart.meals.forEach((meal, idx) => {
+        if (meal.id === action.mealId) {
+          mealIdx = idx
+        }
+      })
+      cart.meals[mealIdx] = {...cart.meals[mealIdx]}
+      cart.meals[mealIdx].mealOrder = {...cart.meals[mealIdx].mealOrder}
+      cart.meals[mealIdx].mealOrder.quantity = action.quantity
+      return cart
     }
     default:
       return state

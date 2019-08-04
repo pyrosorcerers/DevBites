@@ -95,3 +95,19 @@ router.delete('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.put('/edit', async (req, res, next) => {
+  try {
+    const data = await MealOrder.findOne({
+      where: {
+        mealId: req.body.mealId,
+        orderId: req.body.orderId
+      }
+    })
+    data.quantity = req.body.quantity
+    await data.save()
+    res.sendStatus(201)
+  } catch (error) {
+    next(error)
+  }
+})
