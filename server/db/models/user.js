@@ -14,21 +14,21 @@ const User = db.define('user', {
       return () => this.getDataValue('password')
     }
   },
-  firstName: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  lastName: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  address: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  birthDate: {
-    type: Sequelize.DATEONLY
-  },
+  // firstName: {
+  //   type: Sequelize.STRING,
+  //   allowNull: false
+  // },
+  // lastName: {
+  //   type: Sequelize.STRING,
+  //   allowNull: false
+  // },
+  // address: {
+  //   type: Sequelize.STRING,
+  //   allowNull: false
+  // },
+  // birthDate: {
+  //   type: Sequelize.DATEONLY
+  // },
   salt: {
     type: Sequelize.STRING,
     get() {
@@ -37,6 +37,10 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 
