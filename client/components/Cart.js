@@ -6,6 +6,7 @@ import {
   checkoutCartThunk
 } from '../store/cart'
 import {Link} from 'react-router-dom'
+import EditBtn from './EditBtn'
 
 class Cart extends React.Component {
   constructor() {
@@ -74,9 +75,9 @@ class Cart extends React.Component {
                     <h4 style={{margin: '0.5rem', marginRight: '2rem'}}>
                       {meal.name}
                     </h4>
-                    <p style={{margin: '0.5rem', marginRight: '2rem'}}>
-                      Quantity: {quantity}
-                    </p>
+                    <div style={{margin: '0.5rem', marginRight: '2rem'}}>
+                      Quantity:<EditBtn quantity={quantity} />
+                    </div>
                     <p style={{margin: '0.5rem', marginRight: '2rem'}}>
                       Meal Price: ${meal.price}
                     </p>
