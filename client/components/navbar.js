@@ -7,7 +7,7 @@ import {getLoggedInUserCartThunk} from '../store/cart'
 
 class Navbar extends React.Component {
   componentDidMount() {
-    this.props.getLoggedInUserCart()
+    this.props.isLoggedIn && this.props.getLoggedInUserCart()
   }
   render() {
     const {handleClick, isLoggedIn} = this.props
