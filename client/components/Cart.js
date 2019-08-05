@@ -3,15 +3,18 @@ import {connect} from 'react-redux'
 import {
   getLoggedInUserCartThunk,
   deleteMealFromCartThunk,
-  checkoutCartThunk
+  checkoutCartThunk,
+  editMealCartThunk
 } from '../store/cart'
 import {Link} from 'react-router-dom'
+import EditBtn from './EditBtn'
 
 class Cart extends React.Component {
   constructor() {
     super()
     this.handleDeleteMeal = this.handleDeleteMeal.bind(this)
     this.handleCheckoutCart = this.handleCheckoutCart.bind(this)
+    this.handleEditMeal = this.handleEditMeal.bind(this)
   }
 
   componentDidMount() {
@@ -24,6 +27,11 @@ class Cart extends React.Component {
 
   handleDeleteMeal(mealId, orderId) {
     this.props.deleteMealFromCart(mealId, orderId)
+  }
+
+  handleEditMeal(mealId, orderId, quantity) {
+    // expect this function to pass down to EditBtn component as prop
+    this.props.editBtnCart(mealId, orderId, quantity)
   }
 
   render() {
@@ -74,9 +82,14 @@ class Cart extends React.Component {
                     <h4 style={{margin: '0.5rem', marginRight: '2rem'}}>
                       {meal.name}
                     </h4>
-                    <p style={{margin: '0.5rem', marginRight: '2rem'}}>
-                      Quantity: {quantity}
-                    </p>
+                    <div style={{margin: '0.5rem', marginRight: '2rem'}}>
+                      <EditBtn
+                        quantity={quantity}
+                        handleEdit={this.handleEditMeal}
+                        mealId={meal.id}
+                        orderId={this.props.cart.id}
+                      />
+                    </div>
                     <p style={{margin: '0.5rem', marginRight: '2rem'}}>
                       Meal Price: ${meal.price}
                     </p>
@@ -117,7 +130,9 @@ const mapDispatchToProps = dispatch => {
     deleteMealFromCart: (mealId, orderId) =>
       dispatch(deleteMealFromCartThunk(mealId, orderId)),
     checkoutCart: (orderId, totalPrice) =>
-      dispatch(checkoutCartThunk(orderId, totalPrice))
+      dispatch(checkoutCartThunk(orderId, totalPrice)),
+    editBtnCart: (mealId, orderId, quantity) =>
+      dispatch(editMealCartThunk(mealId, orderId, quantity))
   }
 }
 

@@ -50,10 +50,15 @@ class singleMeal extends React.Component {
         {this.props.isLoggedIn ? (
           <div>
             <select onChange={this.handleChange}>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
+              {Array(5)
+                .fill(1)
+                .map((val, i) => {
+                  return (
+                    <option value={val + i} key={val + i}>
+                      {val + i}
+                    </option>
+                  )
+                })}
             </select>
             <button
               type="submit"
