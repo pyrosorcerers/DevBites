@@ -168,6 +168,9 @@ export default function(state = userCart, action) {
       const newmeals = state.meals.filter(meal => meal.id !== action.mealId)
       return {...state, meals: newmeals}
     }
+    case CHECKOUT_CART: {
+      return null
+    }
     case EDIT_MEAL_QUANTITY: {
       const cart = {...state}
       cart.meals = [...state.meals]
