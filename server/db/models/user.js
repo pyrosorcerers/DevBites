@@ -6,7 +6,10 @@ const User = db.define('user', {
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
   },
   password: {
     type: Sequelize.STRING,
@@ -14,21 +17,21 @@ const User = db.define('user', {
       return () => this.getDataValue('password')
     }
   },
-  // firstName: {
-  //   type: Sequelize.STRING,
-  //   allowNull: false
-  // },
-  // lastName: {
-  //   type: Sequelize.STRING,
-  //   allowNull: false
-  // },
-  // address: {
-  //   type: Sequelize.STRING,
-  //   allowNull: false
-  // },
-  // birthDate: {
-  //   type: Sequelize.DATEONLY
-  // },
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  address: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  birthDate: {
+    type: Sequelize.DATEONLY
+  },
   salt: {
     type: Sequelize.STRING,
     get() {

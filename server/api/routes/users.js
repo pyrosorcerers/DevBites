@@ -1,21 +1,7 @@
 const router = require('express').Router()
 const {User, Meal, Order, MealOrder} = require('../../db/models')
-
+const {authorizeAdmin, authorizeCorrectUser} = require('../utils/authorize')
 module.exports = router
-
-const authorizeAdmin = (req, res, next) => {
-  if (req.user.isAdmin) next()
-  else {
-    res.status(403).json('Restricted Access!')
-  }
-}
-
-const authorizeCorrectUser = (req, res, next) => {
-  if (req.user.id === Number(req.params.id)) next()
-  else {
-    res.status(403).json('Restricted Access!')
-  }
-}
 
 router.get('/', authorizeAdmin, async (req, res, next) => {
   try {
