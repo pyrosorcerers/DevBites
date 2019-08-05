@@ -2,6 +2,8 @@ import React from 'react'
 import {getUserOrdersThunk} from '../store/accountDetails'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {Typography, List, ListItem} from '@material-ui/core'
+import {Restaurant} from '@material-ui/icons'
 
 class AccountDetails extends React.Component {
   componentDidMount() {
@@ -11,7 +13,7 @@ class AccountDetails extends React.Component {
     let count = 1
     return (
       <div>
-        <h2>Order History</h2>
+        <Typography variant="h3">Order History</Typography>
         {this.props.orders.length ? (
           <div>
             <div style={{margin: '0.5rem', marginBottom: '1rem'}}>
@@ -26,13 +28,20 @@ class AccountDetails extends React.Component {
                     alignItems: 'center'
                   }}
                 >
-                  <h3 style={{margin: '0.5rem', marginRight: '2rem'}}>
-                    Order ID: {count++}
-                  </h3>
-                  <div>Ordered on {new Date(order.createdAt).toString()}</div>
-                  <p style={{margin: '0.5rem', marginRight: '2rem'}}>
-                    Total Price: {order.totalPrice}
-                  </p>
+                  <List>
+                    <ListItem>
+                      <Restaurant />
+                      <h3 style={{margin: '0.5rem', marginRight: '2rem'}}>
+                        Order ID: {count++}
+                      </h3>
+                      <div>
+                        Ordered on: {new Date(order.createdAt).toString()}
+                      </div>
+                      <p style={{margin: '0.5rem', marginRight: '2rem'}}>
+                        Total Price: $ {order.totalPrice}
+                      </p>
+                    </ListItem>
+                  </List>
                 </div>
               )
             })}

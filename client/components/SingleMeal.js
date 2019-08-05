@@ -2,6 +2,7 @@ import React from 'react'
 import {getSingleMealThunk} from '../store/singleMeal'
 import {getLoggedInUserCartThunk, addMealToCartThunk} from '../store/cart'
 import {connect} from 'react-redux'
+import {Select, MenuItem} from '@material-ui/core'
 
 class singleMeal extends React.Component {
   constructor() {
@@ -16,6 +17,7 @@ class singleMeal extends React.Component {
 
   handleChange(event) {
     this.setState({
+      [event.target.name]: event.target.value,
       quantity: event.target.value
     })
   }
@@ -49,12 +51,17 @@ class singleMeal extends React.Component {
         <span>${meal.price}</span>
         {this.props.isLoggedIn ? (
           <div>
-            <select onChange={this.handleChange}>
-              <option>1</option>
+            <Select name="" onChange={this.handleChange}>
+              {/* <option>1</option>
               <option>2</option>
               <option>3</option>
-              <option>4</option>
-            </select>
+              <option>4</option> */}
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+              <MenuItem value={4}>4</MenuItem>
+              <MenuItem value={5}>5</MenuItem>
+            </Select>
             <button
               type="submit"
               onClick={this.handleSubmit}

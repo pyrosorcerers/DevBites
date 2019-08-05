@@ -6,6 +6,8 @@ import {
   checkoutCartThunk
 } from '../store/cart'
 import {Link} from 'react-router-dom'
+import {DeleteForever} from '@material-ui/icons'
+import {Fab} from '@material-ui/core'
 
 class Cart extends React.Component {
   constructor() {
@@ -62,24 +64,24 @@ class Cart extends React.Component {
                       alignItems: 'center'
                     }}
                   >
-                    <button
-                      type="button"
-                      onClick={() => {
-                        this.handleDeleteMeal(meal.id, this.props.cart.id)
-                      }}
-                      style={{marginTop: '.3rem'}}
-                    >
-                      Delete
-                    </button>
                     <h4 style={{margin: '0.5rem', marginRight: '2rem'}}>
                       {meal.name}
                     </h4>
+                    <br />
                     <p style={{margin: '0.5rem', marginRight: '2rem'}}>
                       Quantity: {quantity}
                     </p>
                     <p style={{margin: '0.5rem', marginRight: '2rem'}}>
                       Meal Price: ${meal.price}
                     </p>
+                    <Fab
+                      onClick={() => {
+                        this.handleDeleteMeal(meal.id, this.props.cart.id)
+                      }}
+                    >
+                      {' '}
+                      <DeleteForever />{' '}
+                    </Fab>
                   </div>
                 )
               })}

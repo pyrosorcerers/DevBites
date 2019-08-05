@@ -1,10 +1,8 @@
 import React from 'react'
-import { getMealsThunk } from '../store/meals'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { Card, CardHeader, withStyles, CardMedia } from '@material-ui/core'
-import { flexbox, fontSize } from '@material-ui/system'
-import shadows from '@material-ui/core/styles/shadows'
+import {getMealsThunk} from '../store/meals'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+import {Card, CardHeader, withStyles, CardMedia} from '@material-ui/core'
 
 const styles = theme => ({
   card: {
@@ -26,8 +24,8 @@ class Menu extends React.Component {
   }
 
   render() {
-    const { classes } = this.props
-    const linkStyle = { textDecoration: 'none', color: 'black' }
+    const {classes} = this.props
+    const linkStyle = {textDecoration: 'none', color: 'black'}
     return (
       <div className="all-menu-items">
         {this.props.menu.map(meal => {
