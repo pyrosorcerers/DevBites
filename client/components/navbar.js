@@ -4,42 +4,94 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {getLoggedInUserCartThunk} from '../store/cart'
+import {Breadcrumbs, Paper, Button} from '@material-ui/core'
 
 class Navbar extends React.Component {
   componentDidMount() {
     this.props.getLoggedInUserCart()
   }
+
   render() {
-    const {handleClick, isLoggedIn} = this.props
+    const {handleClick, isLoggedIn, classes} = this.props
+    const linkStyle = {textDecoration: 'none', color: 'black'}
+    const materialRouter = React.forwardRef((props, ref) => (
+      <Link innerRef={ref} {...props} />
+    ))
     return (
       <div>
-        <h1 className="title-header">DEV BITES</h1>
-        <nav className="nav-bar">
-          {isLoggedIn ? (
-            <div>
-              {/* The navbar will show these links after you log in */}
-              <Link to="/home">Home</Link>
-              <Link to="/accountDetails">My Account</Link>
-              <a href="#" onClick={handleClick}>
-                Logout
-              </a>
-              <Link to="/menu">Menu</Link>
-              <Link to="/cart">
-                Cart{' '}
-                {this.props.userCart &&
-                  (this.props.userCart.meals &&
-                    this.props.userCart.meals.length)}
-              </Link>
-            </div>
-          ) : (
-            <div>
-              {/* The navbar will show these links before you log in */}
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
-              <Link to="/menu">Menu</Link>
-            </div>
-          )}
-        </nav>
+        <div className="title-header">
+          <h1>DEV BITES</h1>
+          <nav className="nav-bar">
+            {isLoggedIn ? (
+              <div className="nav-div">
+                <Breadcrumbs>
+                  {/* The navbar will show these links after you log in */}
+                  <Button
+                    component={materialRouter}
+                    style={linkStyle}
+                    to="/home"
+                  >
+                    Home
+                  </Button>
+                  <Button
+                    component={materialRouter}
+                    to="/accountDetails"
+                    style={linkStyle}
+                  >
+                    My Account
+                  </Button>
+                  <Button href="#" onClick={handleClick} style={linkStyle}>
+                    Logout
+                  </Button>
+                  <Button
+                    component={materialRouter}
+                    to="/menu"
+                    style={linkStyle}
+                  >
+                    Menu
+                  </Button>
+                  <Button
+                    component={materialRouter}
+                    to="/cart"
+                    style={linkStyle}
+                  >
+                    Cart{' '}
+                    {this.props.userCart &&
+                      (this.props.userCart.meals &&
+                        this.props.userCart.meals.length)}
+                  </Button>
+                </Breadcrumbs>
+              </div>
+            ) : (
+              <div>
+                <Breadcrumbs>
+                  {/* The navbar will show these links before you log in */}
+                  <Button
+                    component={materialRouter}
+                    to="/login"
+                    style={linkStyle}
+                  >
+                    Login
+                  </Button>
+                  <Button
+                    component={materialRouter}
+                    to="/signup"
+                    style={linkStyle}
+                  >
+                    Sign Up
+                  </Button>
+                  <Button
+                    component={materialRouter}
+                    to="/menu"
+                    style={linkStyle}
+                  >
+                    Menu
+                  </Button>
+                </Breadcrumbs>
+              </div>
+            )}
+          </nav>
+        </div>
         <hr />
       </div>
     )
