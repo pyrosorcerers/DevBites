@@ -22,16 +22,16 @@ class Cart extends React.Component {
   }
 
   handleCheckoutCart(orderId, totalPrice) {
-    this.props.checkoutCart(orderId, totalPrice)
+    this.props.checkoutCart(this.props.user.id, orderId, totalPrice)
   }
 
   handleDeleteMeal(mealId, orderId) {
-    this.props.deleteMealFromCart(mealId, orderId)
+    this.props.deleteMealFromCart(this.props.user.id, mealId, orderId)
   }
 
   handleEditMeal(mealId, orderId, quantity) {
     // expect this function to pass down to EditBtn component as prop
-    this.props.editBtnCart(mealId, orderId, quantity)
+    this.props.editBtnCart(this.props.user.id, mealId, orderId, quantity)
   }
 
   render() {
@@ -127,12 +127,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getLoggedInUserCart: userId => dispatch(getLoggedInUserCartThunk(userId)),
-    deleteMealFromCart: (mealId, orderId) =>
-      dispatch(deleteMealFromCartThunk(mealId, orderId)),
-    checkoutCart: (orderId, totalPrice) =>
-      dispatch(checkoutCartThunk(orderId, totalPrice)),
-    editBtnCart: (mealId, orderId, quantity) =>
-      dispatch(editMealCartThunk(mealId, orderId, quantity))
+    deleteMealFromCart: (userId, mealId, orderId) =>
+      dispatch(deleteMealFromCartThunk(userId, mealId, orderId)),
+    checkoutCart: (userId, orderId, totalPrice) =>
+      dispatch(checkoutCartThunk(userId, orderId, totalPrice)),
+    editBtnCart: (userId, mealId, orderId, quantity) =>
+      dispatch(editMealCartThunk(userId, mealId, orderId, quantity))
   }
 }
 

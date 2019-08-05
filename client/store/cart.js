@@ -95,12 +95,13 @@ export const addMealToCartThunk = (quantity, mealId, userId) => {
   }
 }
 
-export const deleteMealFromCartThunk = (mealId, orderId) => {
+export const deleteMealFromCartThunk = (userId, mealId, orderId) => {
   return async dispatch => {
     try {
       const deleteInfo = {
         mealId,
-        orderId
+        orderId,
+        userId
       }
       await axios.delete(`/api/cart`, {
         data: deleteInfo
@@ -112,10 +113,11 @@ export const deleteMealFromCartThunk = (mealId, orderId) => {
   }
 }
 
-export const checkoutCartThunk = (orderId, totalPrice) => {
+export const checkoutCartThunk = (userId, orderId, totalPrice) => {
   return async dispatch => {
     try {
       const updatePrice = {
+        userId,
         orderId,
         totalPrice
       }
@@ -128,13 +130,14 @@ export const checkoutCartThunk = (orderId, totalPrice) => {
   }
 }
 
-export const editMealCartThunk = (mealId, orderId, quantity) => {
+export const editMealCartThunk = (userId, mealId, orderId, quantity) => {
   return async dispatch => {
     try {
-      const {data} = await axios.put('/api/cart/edit', {
+      await axios.put('/api/cart/edit', {
         mealId,
         orderId,
-        quantity
+        quantity,
+        userId
       })
       dispatch(editMealQuantity(mealId, quantity))
     } catch (error) {
