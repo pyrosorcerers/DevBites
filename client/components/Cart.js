@@ -20,7 +20,6 @@ import {
 } from '@material-ui/core'
 import EditBtn from './EditBtn'
 
-
 class Cart extends React.Component {
   constructor() {
     super()
@@ -49,16 +48,6 @@ class Cart extends React.Component {
   render() {
     let totalPrice = 0
     const classes = this.props
-    if (!this.props.cart)
-      return (
-        <div>
-          <h2>Shopping Cart</h2>
-          <div>Your DevBites Cart is empty.</div>
-          <Link to="menu">
-            <button type="button">Go to Menus</button>
-          </Link>
-        </div>
-      )
     return (
       <div>
         <h2>Shopping Cart</h2>
@@ -86,7 +75,6 @@ class Cart extends React.Component {
                         alignItems: 'center'
                       }}
                     >
-
                       <ListItem>
                         <ListItemAvatar>
                           <Avatar>
@@ -109,24 +97,20 @@ class Cart extends React.Component {
                             meal.price
                           }`}
                         />
+                        <div style={{margin: '0.5rem', marginRight: '2rem'}}>
+                          <EditBtn
+                            quantity={quantity}
+                            handleEdit={this.handleEditMeal}
+                            mealId={meal.id}
+                            orderId={this.props.cart.id}
+                          />
+                        </div>
                       </ListItem>
                       <Divider variant="inset" component="li" />
                     </div>
                   )
                 })}
               </List>
-
-                    <div style={{margin: '0.5rem', marginRight: '2rem'}}>
-                      <EditBtn
-                        quantity={quantity}
-                        handleEdit={this.handleEditMeal}
-                        mealId={meal.id}
-                        orderId={this.props.cart.id}
-                      />
-                    </div>
-                  </div>
-                )
-              })}
               <br />
               Total Price of Cart: ${totalPrice}
               <br />
