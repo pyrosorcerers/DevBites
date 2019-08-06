@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {getLoggedInUserCartThunk} from '../store/cart'
-import {Breadcrumbs, Button, withStyles} from '@material-ui/core'
+import {Breadcrumbs, Button, withStyles, Badge} from '@material-ui/core'
 import {
   Home,
   ShoppingCart,
@@ -17,6 +17,9 @@ import {
 const styles = theme => ({
   icon: {
     marginRight: 10
+  },
+  cart: {
+    marginRight: 15
   }
 })
 
@@ -77,12 +80,19 @@ class Navbar extends React.Component {
                     to="/cart"
                     style={linkStyle}
                   >
-                    {' '}
-                    <ShoppingCart className={classes.icon} />
+                    <Badge
+                      badgeContent={
+                        this.props.userCart &&
+                        (this.props.userCart.meals &&
+                          this.props.userCart.meals.length)
+                      }
+                      color="primary"
+                      className={classes.cart}
+                    >
+                      {' '}
+                      <ShoppingCart className={classes.icon} />{' '}
+                    </Badge>{' '}
                     Cart{' '}
-                    {this.props.userCart &&
-                      (this.props.userCart.meals &&
-                        this.props.userCart.meals.length)}
                   </Button>
                 </Breadcrumbs>
               </div>
