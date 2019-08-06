@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Button} from '@material-ui/core'
 
 export default class EditBtn extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ export default class EditBtn extends React.Component {
           <select
             onChange={event => this.handleChange(event)}
             value={this.state.quantity}
+            className="edit-button"
           >
             {Array(5)
               .fill(1)
@@ -34,14 +36,18 @@ export default class EditBtn extends React.Component {
                 )
               })}
           </select>
-          <button
+          <Button
             type="button"
             onClick={() =>
               this.props.handleEdit(mealId, orderId, this.state.quantity)
             }
+            variant="contained"
+            color="secondary"
+            className="edit-button"
           >
             Edit
-          </button>
+          </Button>
+          Meal Price: $ {this.props.price}
         </label>
       </div>
     )

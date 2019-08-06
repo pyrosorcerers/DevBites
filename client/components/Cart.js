@@ -92,18 +92,16 @@ class Cart extends React.Component {
                         </ListItemAvatar>
                         <ListItemText
                           primary={meal.name}
-                          secondary={`Quantity in Cart: ${quantity}  /  Meal Price: $ ${
-                            meal.price
-                          }`}
+                          secondary={
+                            <EditBtn
+                              quantity={quantity}
+                              price={meal.price}
+                              handleEdit={this.handleEditMeal}
+                              mealId={meal.id}
+                              orderId={this.props.cart.id}
+                            />
+                          }
                         />
-                        <div style={{margin: '0.5rem', marginRight: '2rem'}}>
-                          <EditBtn
-                            quantity={quantity}
-                            handleEdit={this.handleEditMeal}
-                            mealId={meal.id}
-                            orderId={this.props.cart.id}
-                          />
-                        </div>
                       </ListItem>
                       <Divider variant="inset" component="li" />
                     </div>

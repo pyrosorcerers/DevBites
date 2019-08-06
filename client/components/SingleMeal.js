@@ -2,7 +2,13 @@ import React from 'react'
 import {getSingleMealThunk, removeSingleMeal} from '../store/singleMeal'
 import {getLoggedInUserCartThunk, addMealToCartThunk} from '../store/cart'
 import {connect} from 'react-redux'
-import {Select, MenuItem} from '@material-ui/core'
+import {Grid, Paper, Typography, withStyles} from '@material-ui/core'
+
+const styles = theme => ({
+  singleMealBody: {
+    marginLeft: 10
+  }
+})
 
 class singleMeal extends React.Component {
   constructor() {
@@ -40,46 +46,66 @@ class singleMeal extends React.Component {
 
   render() {
     const meal = this.props.singleMeal
+    const classes = this.props
     return (
       <div key={meal.id}>
-        <h1>{meal.name}</h1>
-        <img src={meal.image} alt="meal image" />
-        <p>{meal.description}</p>
-        <br />
-        <span>calories: {meal.calories}</span>
-        <br />
-        <span>${meal.price}</span>
-        {this.props.isLoggedIn ? (
-          <div>
-            <select onChange={this.handleChange}>
-              {Array(5)
-                .fill(1)
-                .map((val, i) => {
-                  return (
-                    <option value={val + i} key={val + i}>
-                      {val + i}
-                    </option>
-                  )
-                })}
-            </select>
-
-            <button
-              type="submit"
-              onClick={this.handleSubmit}
-              disabled={
-                this.props.userCart &&
-                (this.props.userCart.meals &&
-                  this.props.userCart.meals.some(
-                    cartItem => cartItem.id === meal.id
-                  ))
-              }
+        <Paper className="single-Meal-whole-paper">
+          <Grid container justify="center">
+            <Grid>
+              <h1>{meal.name}</h1>
+              <img src={meal.image} alt="meal image" style={{width: 400}} />
+            </Grid>
+            <Grid
+              item
+              xs
+              container
+              direction="column"
+              justify="center"
+              className={classes.singleMealBody}
+              style={{marginLeft: 150}}
             >
-              Add to Cart
-            </button>
-          </div>
-        ) : (
-          <p>Please log in to add to cart!</p>
-        )}
+              <Typography gutterBottom variant="subtitle1" style={{width: 500}}>
+                {meal.description}
+              </Typography>
+              <br />
+              <Typography variant="h6">calories: {meal.calories}</Typography>
+              <br />
+              <Typography>${meal.price}</Typography>
+
+              {this.props.isLoggedIn ? (
+                <div>
+                  <select onChange={this.handleChange}>
+                    {Array(5)
+                      .fill(1)
+                      .map((val, i) => {
+                        return (
+                          <option value={val + i} key={val + i}>
+                            {val + i}
+                          </option>
+                        )
+                      })}
+                  </select>
+
+                  <button
+                    type="submit"
+                    onClick={this.handleSubmit}
+                    disabled={
+                      this.props.userCart &&
+                      (this.props.userCart.meals &&
+                        this.props.userCart.meals.some(
+                          cartItem => cartItem.id === meal.id
+                        ))
+                    }
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              ) : (
+                <p>Please log in to add to cart!</p>
+              )}
+            </Grid>
+          </Grid>
+        </Paper>
       </div>
     )
   }
@@ -104,4 +130,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(singleMeal)
+export default withStyles(styles)(
+  connect(mapStateToProps, mapDispatchToProps)(singleMeal)
+)

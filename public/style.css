@@ -32,3 +32,11 @@ label {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.edit-button {
+  margin: 10px;
+}
+
+.single-Meal-whole-paper {
+  padding: 50px;
+}
