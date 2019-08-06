@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {Button} from '@material-ui/core'
 
 const AddedToCart = () => {
   return (
@@ -7,7 +8,7 @@ const AddedToCart = () => {
       Your meal has been successfully added to your shopping cart.
       <br />
       <Link to="cart">
-        <button type="button">Proceed to Checkout</button>
+        <Button type="button">Proceed to Checkout</Button>
       </Link>
     </div>
   )
