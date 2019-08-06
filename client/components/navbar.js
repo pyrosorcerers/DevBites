@@ -25,7 +25,7 @@ const styles = theme => ({
 
 class Navbar extends React.Component {
   componentDidMount() {
-    this.props.getLoggedInUserCart()
+    this.props.isLoggedIn && this.props.getLoggedInUserCart()
   }
 
   render() {

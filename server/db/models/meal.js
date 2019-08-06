@@ -24,7 +24,7 @@ const Meal = db.define('meal', {
     allowNull: false
   },
   price: {
-    type: Sequelize.DECIMAL,
+    type: Sequelize.INTEGER,
     allowNull: false
   }
 })

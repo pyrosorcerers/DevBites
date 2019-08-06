@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import {
   getLoggedInUserCartThunk,
   deleteMealFromCartThunk,
-  checkoutCartThunk
+  checkoutCartThunk,
+  editMealCartThunk
 } from '../store/cart'
 import {Link} from 'react-router-dom'
 import {DeleteForever} from '@material-ui/icons'
@@ -17,12 +18,15 @@ import {
   ListItemAvatar,
   Avatar
 } from '@material-ui/core'
+import EditBtn from './EditBtn'
+
 
 class Cart extends React.Component {
   constructor() {
     super()
     this.handleDeleteMeal = this.handleDeleteMeal.bind(this)
     this.handleCheckoutCart = this.handleCheckoutCart.bind(this)
+    this.handleEditMeal = this.handleEditMeal.bind(this)
   }
 
   componentDidMount() {
@@ -30,11 +34,16 @@ class Cart extends React.Component {
   }
 
   handleCheckoutCart(orderId, totalPrice) {
-    this.props.checkoutCart(orderId, totalPrice)
+    this.props.checkoutCart(this.props.user.id, orderId, totalPrice)
   }
 
   handleDeleteMeal(mealId, orderId) {
-    this.props.deleteMealFromCart(mealId, orderId)
+    this.props.deleteMealFromCart(this.props.user.id, mealId, orderId)
+  }
+
+  handleEditMeal(mealId, orderId, quantity) {
+    // expect this function to pass down to EditBtn component as prop
+    this.props.editBtnCart(this.props.user.id, mealId, orderId, quantity)
   }
 
   render() {
@@ -77,6 +86,7 @@ class Cart extends React.Component {
                         alignItems: 'center'
                       }}
                     >
+
                       <ListItem>
                         <ListItemAvatar>
                           <Avatar>
@@ -99,22 +109,24 @@ class Cart extends React.Component {
                             meal.price
                           }`}
                         />
-                        {/* <h4 style={{ margin: '0.5rem', marginRight: '2rem' }}>
-                            {meal.name}
-                          </h4>
-                          <br />
-                          <p style={{ margin: '0.5rem', marginRight: '2rem' }}>
-                            Quantity: {quantity}
-                          </p>
-                          <p style={{ margin: '0.5rem', marginRight: '2rem' }}>
-                            Meal Price: ${meal.price}
-                          </p> */}
                       </ListItem>
                       <Divider variant="inset" component="li" />
                     </div>
                   )
                 })}
               </List>
+
+                    <div style={{margin: '0.5rem', marginRight: '2rem'}}>
+                      <EditBtn
+                        quantity={quantity}
+                        handleEdit={this.handleEditMeal}
+                        mealId={meal.id}
+                        orderId={this.props.cart.id}
+                      />
+                    </div>
+                  </div>
+                )
+              })}
               <br />
               Total Price of Cart: ${totalPrice}
               <br />
@@ -148,10 +160,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getLoggedInUserCart: userId => dispatch(getLoggedInUserCartThunk(userId)),
-    deleteMealFromCart: (mealId, orderId) =>
-      dispatch(deleteMealFromCartThunk(mealId, orderId)),
-    checkoutCart: (orderId, totalPrice) =>
-      dispatch(checkoutCartThunk(orderId, totalPrice))
+    deleteMealFromCart: (userId, mealId, orderId) =>
+      dispatch(deleteMealFromCartThunk(userId, mealId, orderId)),
+    checkoutCart: (userId, orderId, totalPrice) =>
+      dispatch(checkoutCartThunk(userId, orderId, totalPrice)),
+    editBtnCart: (userId, mealId, orderId, quantity) =>
+      dispatch(editMealCartThunk(userId, mealId, orderId, quantity))
   }
 }
 

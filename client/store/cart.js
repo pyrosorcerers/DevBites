@@ -8,6 +8,7 @@ const GET_LOGGED_IN_USER_CART = 'GET_LOGGED_IN_USER_CART'
 const ADD_MEAL_TO_CART = 'ADD_MEAL_TO_CART'
 const REMOVE_MEAL_FROM_CART = 'REMOVE_MEAL_FROM_CART'
 const CHECKOUT_CART = 'CHECKOUT_CART'
+const EDIT_MEAL_QUANTITY = 'EDIT_MEAL_QUANTITY'
 
 // action creator
 export const getLoggedInUserCart = cart => {
@@ -46,6 +47,14 @@ export const checkoutCart = () => {
   }
 }
 
+export const editMealQuantity = (mealId, quantity) => {
+  return {
+    type: EDIT_MEAL_QUANTITY,
+    mealId,
+    quantity
+  }
+}
+
 // thunk middleware
 export const getLoggedInUserCartThunk = () => {
   return async dispatch => {
@@ -61,7 +70,6 @@ export const getLoggedInUserCartThunk = () => {
 export const getUserCartThunk = singleUserId => {
   return async dispatch => {
     try {
-      console.log('this is inside the thunk: ', singleUserId)
       const {data} = await axios.get(`/api/cart/${singleUserId}`)
       dispatch(getUserCart(data))
     } catch (error) {
@@ -87,12 +95,13 @@ export const addMealToCartThunk = (quantity, mealId, userId) => {
   }
 }
 
-export const deleteMealFromCartThunk = (mealId, orderId) => {
+export const deleteMealFromCartThunk = (userId, mealId, orderId) => {
   return async dispatch => {
     try {
       const deleteInfo = {
         mealId,
-        orderId
+        orderId,
+        userId
       }
       await axios.delete(`/api/cart`, {
         data: deleteInfo
@@ -104,16 +113,33 @@ export const deleteMealFromCartThunk = (mealId, orderId) => {
   }
 }
 
-export const checkoutCartThunk = (orderId, totalPrice) => {
+export const checkoutCartThunk = (userId, orderId, totalPrice) => {
   return async dispatch => {
     try {
       const updatePrice = {
+        userId,
         orderId,
         totalPrice
       }
       await axios.put(`/api/cart`, updatePrice)
       dispatch(checkoutCart())
       history.push('/orderSubmitted')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const editMealCartThunk = (userId, mealId, orderId, quantity) => {
+  return async dispatch => {
+    try {
+      await axios.put('/api/cart/edit', {
+        mealId,
+        orderId,
+        quantity,
+        userId
+      })
+      dispatch(editMealQuantity(mealId, quantity))
     } catch (error) {
       console.log(error)
     }
@@ -141,6 +167,23 @@ export default function(state = userCart, action) {
     case REMOVE_MEAL_FROM_CART: {
       const newmeals = state.meals.filter(meal => meal.id !== action.mealId)
       return {...state, meals: newmeals}
+    }
+    case CHECKOUT_CART: {
+      return null
+    }
+    case EDIT_MEAL_QUANTITY: {
+      const cart = {...state}
+      cart.meals = [...state.meals]
+      let mealIdx = null
+      cart.meals.forEach((meal, idx) => {
+        if (meal.id === action.mealId) {
+          mealIdx = idx
+        }
+      })
+      cart.meals[mealIdx] = {...cart.meals[mealIdx]}
+      cart.meals[mealIdx].mealOrder = {...cart.meals[mealIdx].mealOrder}
+      cart.meals[mealIdx].mealOrder.quantity = action.quantity
+      return cart
     }
     default:
       return state

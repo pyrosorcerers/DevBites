@@ -6,7 +6,10 @@ const User = db.define('user', {
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
   },
   password: {
     type: Sequelize.STRING,
@@ -25,9 +28,6 @@ const User = db.define('user', {
   address: {
     type: Sequelize.STRING,
     allowNull: false
-  },
-  birthDate: {
-    type: Sequelize.DATEONLY
   },
   salt: {
     type: Sequelize.STRING,

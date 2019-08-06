@@ -8,14 +8,11 @@ const MealOrder = db.define('mealOrder', {
     allowNull: false
   },
   price: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    validate: {
+      min: 10
+    }
   }
 })
-
-MealOrder.prototype.setNewPrice = async function() {
-  const {price} = await Meal.findByPk(this.mealId)
-  this.price = price
-  this.save()
-}
 
 module.exports = MealOrder

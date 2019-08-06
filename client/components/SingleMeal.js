@@ -9,7 +9,6 @@ class singleMeal extends React.Component {
     super()
     this.state = {
       quantity: 1
-      // disabledButton: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -23,9 +22,6 @@ class singleMeal extends React.Component {
   }
 
   handleSubmit() {
-    // this.setState({
-    //   disabledButton: true
-    // })
     this.props.addToCart(
       this.state.quantity,
       this.props.match.params.id,
@@ -35,7 +31,7 @@ class singleMeal extends React.Component {
 
   componentDidMount() {
     this.props.getMeal(this.props.match.params.id)
-    this.props.getLoggedInUserCart()
+    this.props.isLoggedIn && this.props.getLoggedInUserCart()
   }
 
   render() {
@@ -51,17 +47,19 @@ class singleMeal extends React.Component {
         <span>${meal.price}</span>
         {this.props.isLoggedIn ? (
           <div>
-            <Select name="" onChange={this.handleChange}>
-              {/* <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option> */}
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={4}>4</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
-            </Select>
+
+            <select onChange={this.handleChange}>
+              {Array(5)
+                .fill(1)
+                .map((val, i) => {
+                  return (
+                    <option value={val + i} key={val + i}>
+                      {val + i}
+                    </option>
+                  )
+                })}
+            </select>
+
             <button
               type="submit"
               onClick={this.handleSubmit}

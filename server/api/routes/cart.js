@@ -1,5 +1,10 @@
 const router = require('express').Router()
 const {Meal, Order, MealOrder} = require('../../db/models')
+const {
+  authorizeAdmin,
+  authorizeCorrectUser,
+  authorizeMyCart
+} = require('../utils/authorize')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -17,7 +22,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:userId', async (req, res, next) => {
+router.get('/:userId', authorizeAdmin, async (req, res, next) => {
   try {
     const userCart = await Order.findOne({
       include: [{model: Meal}],
@@ -32,7 +37,7 @@ router.get('/:userId', async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', authorizeMyCart, async (req, res, next) => {
   try {
     const userCart = await Order.findOrCreate({
       where: {
@@ -58,7 +63,7 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-router.put('/', async (req, res, next) => {
+router.put('/', authorizeMyCart, async (req, res, next) => {
   try {
     const userCart = await Order.findByPk(req.body.orderId)
     userCart.totalPrice = req.body.totalPrice
@@ -82,7 +87,7 @@ router.put('/', async (req, res, next) => {
   }
 })
 
-router.delete('/', async (req, res, next) => {
+router.delete('/', authorizeMyCart, async (req, res, next) => {
   try {
     await MealOrder.destroy({
       where: {
@@ -93,5 +98,21 @@ router.delete('/', async (req, res, next) => {
     res.sendStatus(204)
   } catch (err) {
     next(err)
+  }
+})
+
+router.put('/edit', authorizeMyCart, async (req, res, next) => {
+  try {
+    const data = await MealOrder.findOne({
+      where: {
+        mealId: req.body.mealId,
+        orderId: req.body.orderId
+      }
+    })
+    data.quantity = req.body.quantity
+    await data.save()
+    res.sendStatus(201)
+  } catch (error) {
+    next(error)
   }
 })
