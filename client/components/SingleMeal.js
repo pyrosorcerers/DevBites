@@ -1,5 +1,5 @@
 import React from 'react'
-import {getSingleMealThunk} from '../store/singleMeal'
+import {getSingleMealThunk, removeSingleMeal} from '../store/singleMeal'
 import {getLoggedInUserCartThunk, addMealToCartThunk} from '../store/cart'
 import {connect} from 'react-redux'
 
@@ -8,7 +8,6 @@ class singleMeal extends React.Component {
     super()
     this.state = {
       quantity: 1
-      // disabledButton: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -21,9 +20,6 @@ class singleMeal extends React.Component {
   }
 
   handleSubmit() {
-    // this.setState({
-    //   disabledButton: true
-    // })
     this.props.addToCart(
       this.state.quantity,
       this.props.match.params.id,
@@ -33,7 +29,11 @@ class singleMeal extends React.Component {
 
   componentDidMount() {
     this.props.getMeal(this.props.match.params.id)
-    this.props.getLoggedInUserCart()
+    this.props.isLoggedIn && this.props.getLoggedInUserCart()
+  }
+
+  componentWillUnmount() {
+    this.props.removeSingleMeal()
   }
 
   render() {
@@ -93,6 +93,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    removeSingleMeal: () => dispatch(removeSingleMeal()),
     getMeal: mealId => dispatch(getSingleMealThunk(mealId)),
     getLoggedInUserCart: () => dispatch(getLoggedInUserCartThunk()),
     addToCart: (quantity, mealId, userId) =>

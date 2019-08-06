@@ -29,7 +29,12 @@ class AccountDetails extends React.Component {
                   <h3 style={{margin: '0.5rem', marginRight: '2rem'}}>
                     Order ID: {count++}
                   </h3>
-                  <div>Ordered on {new Date(order.createdAt).toString()}</div>
+                  <div>
+                    Ordered on{' '}
+                    {new Date(order.createdAt)
+                      .toString()
+                      .replace(/(\d\d:\d\d:\d\d).+/, '')}
+                  </div>
                   <p style={{margin: '0.5rem', marginRight: '2rem'}}>
                     Total Price: {order.totalPrice}
                   </p>
