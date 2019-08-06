@@ -4,7 +4,24 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {getLoggedInUserCartThunk} from '../store/cart'
-import {Breadcrumbs, Paper, Button} from '@material-ui/core'
+import {Breadcrumbs, Button, withStyles, Badge} from '@material-ui/core'
+import {
+  Home,
+  ShoppingCart,
+  Person,
+  RestaurantMenu,
+  PersonAdd,
+  ArrowBack
+} from '@material-ui/icons'
+
+const styles = theme => ({
+  icon: {
+    marginRight: 10
+  },
+  cart: {
+    marginRight: 15
+  }
+})
 
 class Navbar extends React.Component {
   componentDidMount() {
@@ -31,6 +48,8 @@ class Navbar extends React.Component {
                     style={linkStyle}
                     to="/home"
                   >
+                    {' '}
+                    <Home className={classes.icon} />
                     Home
                   </Button>
                   <Button
@@ -38,9 +57,13 @@ class Navbar extends React.Component {
                     to="/accountDetails"
                     style={linkStyle}
                   >
+                    {' '}
+                    <Person className={classes.icon} />
                     My Account
                   </Button>
                   <Button href="#" onClick={handleClick} style={linkStyle}>
+                    {' '}
+                    <ArrowBack className={classes.icon} />
                     Logout
                   </Button>
                   <Button
@@ -48,6 +71,8 @@ class Navbar extends React.Component {
                     to="/menu"
                     style={linkStyle}
                   >
+                    {' '}
+                    <RestaurantMenu className={classes.icon} />
                     Menu
                   </Button>
                   <Button
@@ -55,15 +80,24 @@ class Navbar extends React.Component {
                     to="/cart"
                     style={linkStyle}
                   >
+                    <Badge
+                      badgeContent={
+                        this.props.userCart &&
+                        (this.props.userCart.meals &&
+                          this.props.userCart.meals.length)
+                      }
+                      color="primary"
+                      className={classes.cart}
+                    >
+                      {' '}
+                      <ShoppingCart className={classes.icon} />{' '}
+                    </Badge>{' '}
                     Cart{' '}
-                    {this.props.userCart &&
-                      (this.props.userCart.meals &&
-                        this.props.userCart.meals.length)}
                   </Button>
                 </Breadcrumbs>
               </div>
             ) : (
-              <div>
+              <div className="nav-div">
                 <Breadcrumbs>
                   {/* The navbar will show these links before you log in */}
                   <Button
@@ -71,6 +105,8 @@ class Navbar extends React.Component {
                     to="/login"
                     style={linkStyle}
                   >
+                    {' '}
+                    <Person className={classes.icon} />
                     Login
                   </Button>
                   <Button
@@ -78,6 +114,8 @@ class Navbar extends React.Component {
                     to="/signup"
                     style={linkStyle}
                   >
+                    {' '}
+                    <PersonAdd className={classes.icon} />
                     Sign Up
                   </Button>
                   <Button
@@ -85,6 +123,8 @@ class Navbar extends React.Component {
                     to="/menu"
                     style={linkStyle}
                   >
+                    {' '}
+                    <RestaurantMenu className={classes.icon} />
                     Menu
                   </Button>
                 </Breadcrumbs>
@@ -118,7 +158,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+export default withStyles(styles)(
+  connect(mapStateToProps, mapDispatchToProps)(Navbar)
+)
 
 /**
  * PROP TYPES
