@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {getMealsThunk} from '../store/meals'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
@@ -64,3 +65,7 @@ const mapDispatchToProps = dispatch => {
 export default withStyles(styles)(
   connect(mapStateToProps, mapDispatchToProps)(Menu)
 )
+
+Menu.propTypes = {
+  menu: PropTypes.array
+}

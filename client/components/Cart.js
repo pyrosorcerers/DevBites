@@ -47,7 +47,6 @@ class Cart extends React.Component {
 
   render() {
     let totalPrice = 0
-    const classes = this.props
     return (
       <div>
         <h2>Shopping Cart</h2>
@@ -127,7 +126,7 @@ class Cart extends React.Component {
             </div>
           )
         ) : (
-          <div> Loading....</div>
+          <div>Empty Cart</div>
         )}
       </div>
     )

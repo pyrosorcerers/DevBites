@@ -35,7 +35,10 @@ class AccountDetails extends React.Component {
                         Order ID: {count++}
                       </h3>
                       <div>
-                        Ordered on: {new Date(order.createdAt).toString()}
+                        Ordered on:{' '}
+                        {new Date(order.createdAt)
+                          .toString()
+                          .replace(/(\d\d:\d\d:\d\d).+/, '')}
                       </div>
                       <p style={{margin: '0.5rem', marginRight: '2rem'}}>
                         Total Price: $ {order.totalPrice}
@@ -48,7 +51,7 @@ class AccountDetails extends React.Component {
             })}
           </div>
         ) : (
-          <div> Loading....</div>
+          <div>No Order History</div>
         )}
       </div>
     )

@@ -1,8 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-// expect quantity prop pass down
-// expect handleEdit function prop pass down
-// expect mealId and orderId props pass down
 export default class EditBtn extends React.Component {
   constructor(props) {
     super(props)
@@ -10,10 +8,9 @@ export default class EditBtn extends React.Component {
       quantity: this.props.quantity
     }
     this.handleChange = this.handleChange.bind(this)
-    // this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange(event) {
-    let val = event.target.value
+    let val = +event.target.value
     this.setState({quantity: val})
   }
 
@@ -49,4 +46,14 @@ export default class EditBtn extends React.Component {
       </div>
     )
   }
+}
+
+// expect quantity prop pass down
+// expect handleEdit function prop pass down
+// expect mealId and orderId props pass down
+EditBtn.propTypes = {
+  quantity: PropTypes.number,
+  handleEdit: PropTypes.func,
+  mealId: PropTypes.number,
+  orderId: PropTypes.number
 }

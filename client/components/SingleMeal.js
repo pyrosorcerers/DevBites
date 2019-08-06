@@ -1,5 +1,5 @@
 import React from 'react'
-import {getSingleMealThunk} from '../store/singleMeal'
+import {getSingleMealThunk, removeSingleMeal} from '../store/singleMeal'
 import {getLoggedInUserCartThunk, addMealToCartThunk} from '../store/cart'
 import {connect} from 'react-redux'
 import {Select, MenuItem} from '@material-ui/core'
@@ -34,6 +34,10 @@ class singleMeal extends React.Component {
     this.props.isLoggedIn && this.props.getLoggedInUserCart()
   }
 
+  componentWillUnmount() {
+    this.props.removeSingleMeal()
+  }
+
   render() {
     const meal = this.props.singleMeal
     return (
@@ -47,7 +51,6 @@ class singleMeal extends React.Component {
         <span>${meal.price}</span>
         {this.props.isLoggedIn ? (
           <div>
-
             <select onChange={this.handleChange}>
               {Array(5)
                 .fill(1)
@@ -93,6 +96,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    removeSingleMeal: () => dispatch(removeSingleMeal()),
     getMeal: mealId => dispatch(getSingleMealThunk(mealId)),
     getLoggedInUserCart: () => dispatch(getLoggedInUserCartThunk()),
     addToCart: (quantity, mealId, userId) =>
