@@ -42,7 +42,10 @@ class Navbar extends React.Component {
     return (
       <div>
         <div className="title-header">
-          <h1>DEV BITES</h1>
+          <Link to="/" style={{textDecoration: 'none', color: 'black'}}>
+            <h1>DEV BITES</h1>
+          </Link>
+
           <nav className="nav-bar">
             {isLoggedIn ? (
               <div className="nav-div">
