@@ -7,6 +7,17 @@ import {
   editMealCartThunk
 } from '../store/cart'
 import {Link} from 'react-router-dom'
+import {DeleteForever} from '@material-ui/icons'
+import {
+  Fab,
+  Divider,
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemAvatar,
+  Avatar
+} from '@material-ui/core'
 import EditBtn from './EditBtn'
 
 class Cart extends React.Component {
@@ -36,16 +47,6 @@ class Cart extends React.Component {
 
   render() {
     let totalPrice = 0
-    if (!this.props.cart)
-      return (
-        <div>
-          <h2>Shopping Cart</h2>
-          <div>Your DevBites Cart is empty.</div>
-          <Link to="menu">
-            <button type="button">Go to Menus</button>
-          </Link>
-        </div>
-      )
     return (
       <div>
         <h2>Shopping Cart</h2>
@@ -54,63 +55,78 @@ class Cart extends React.Component {
             <div>
               <div>Your DevBites Cart is empty.</div>
               <Link to="menu">
-                <button type="button">Go to Menus</button>
+                <Button type="button" variant="contained" color="primary">
+                  Go to Menus
+                </Button>
               </Link>
             </div>
           ) : (
             <div>
-              {this.props.cart.meals.map(meal => {
-                const {quantity} = meal.mealOrder
-                totalPrice += meal.price * quantity
-                return (
-                  <div
-                    key={meal.id}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center'
-                    }}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => {
-                        this.handleDeleteMeal(meal.id, this.props.cart.id)
+              <List>
+                {this.props.cart.meals.map(meal => {
+                  const {quantity} = meal.mealOrder
+                  totalPrice += meal.price * quantity
+                  return (
+                    <div
+                      key={meal.id}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center'
                       }}
-                      style={{marginTop: '.3rem'}}
                     >
-                      Delete
-                    </button>
-                    <h4 style={{margin: '0.5rem', marginRight: '2rem'}}>
-                      {meal.name}
-                    </h4>
-                    <div style={{margin: '0.5rem', marginRight: '2rem'}}>
-                      <EditBtn
-                        quantity={quantity}
-                        handleEdit={this.handleEditMeal}
-                        mealId={meal.id}
-                        orderId={this.props.cart.id}
-                      />
+                      <ListItem>
+                        <ListItemAvatar>
+                          <Avatar>
+                            <Fab
+                              onClick={() => {
+                                this.handleDeleteMeal(
+                                  meal.id,
+                                  this.props.cart.id
+                                )
+                              }}
+                            >
+                              {' '}
+                              <DeleteForever />{' '}
+                            </Fab>
+                          </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={meal.name}
+                          secondary={`Quantity in Cart: ${quantity}  /  Meal Price: $ ${
+                            meal.price
+                          }`}
+                        />
+                        <div style={{margin: '0.5rem', marginRight: '2rem'}}>
+                          <EditBtn
+                            quantity={quantity}
+                            handleEdit={this.handleEditMeal}
+                            mealId={meal.id}
+                            orderId={this.props.cart.id}
+                          />
+                        </div>
+                      </ListItem>
+                      <Divider variant="inset" component="li" />
                     </div>
-                    <p style={{margin: '0.5rem', marginRight: '2rem'}}>
-                      Meal Price: ${meal.price}
-                    </p>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </List>
               <br />
               Total Price of Cart: ${totalPrice}
               <br />
-              <button
+              <Button
                 type="button"
                 onClick={() => {
                   this.handleCheckoutCart(this.props.cart.id, totalPrice)
                 }}
+                color="primary"
+                variant="contained"
               >
                 Checkout
-              </button>
+              </Button>
             </div>
           )
         ) : (
-          <div> Loading....</div>
+          <div>Empty Cart</div>
         )}
       </div>
     )

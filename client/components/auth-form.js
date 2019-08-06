@@ -42,6 +42,7 @@ const AuthForm = props => {
           <input name="password" type="password" /> */}
           <TextField
             label="Password"
+            type="password"
             variant="outlined"
             name="password"
             margin="normal"

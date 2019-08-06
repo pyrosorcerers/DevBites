@@ -4,8 +4,6 @@ import {getMealsThunk} from '../store/meals'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Card, CardHeader, withStyles, CardMedia} from '@material-ui/core'
-import {flexbox, fontSize} from '@material-ui/system'
-import shadows from '@material-ui/core/styles/shadows'
 
 const styles = theme => ({
   card: {
