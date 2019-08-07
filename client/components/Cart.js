@@ -19,6 +19,7 @@ import {
   Avatar
 } from '@material-ui/core'
 import EditBtn from './EditBtn'
+import PayWithCard from './PayWithCard'
 
 class Cart extends React.Component {
   constructor() {
@@ -121,6 +122,11 @@ class Cart extends React.Component {
               >
                 Checkout
               </Button>
+              <PayWithCard
+                name="Dev Bites"
+                description="The Best In Town!"
+                amount={totalPrice}
+              />
             </div>
           )
         ) : (
