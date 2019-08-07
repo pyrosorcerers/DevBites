@@ -7,8 +7,16 @@ import meals from './meals'
 import singleMeal from './singleMeal'
 import orders from './accountDetails'
 import userCart from './cart'
+import allUsers from './admin'
 
-const reducer = combineReducers({user, meals, singleMeal, orders, userCart})
+const reducer = combineReducers({
+  user,
+  meals,
+  singleMeal,
+  orders,
+  userCart,
+  allUsers
+})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

@@ -34,7 +34,7 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const {handleClick, isLoggedIn, classes} = this.props
+    const {handleClick, isLoggedIn, classes, user} = this.props
     const linkStyle = {textDecoration: 'none', color: 'black'}
     const materialRouter = React.forwardRef((props, ref) => (
       <Link innerRef={ref} {...props} />
@@ -60,6 +60,15 @@ class Navbar extends React.Component {
                     <Home className={classes.icon} />
                     Home
                   </Button>
+                  {user.isAdmin && (
+                    <Button
+                      component={materialRouter}
+                      style={linkStyle}
+                      to="/adminAccount"
+                    >
+                      Admin Access
+                    </Button>
+                  )}
                   <Button
                     component={materialRouter}
                     to="/accountDetails"
@@ -67,7 +76,7 @@ class Navbar extends React.Component {
                   >
                     {' '}
                     <Avatar className={classes.userIcon}>
-                      {this.props.userName.firstName.slice(0, 1)}
+                      {this.props.user.firstName.slice(0, 1)}
                     </Avatar>
                     My Account
                   </Button>
@@ -156,7 +165,7 @@ const mapStateToProps = state => {
     isLoggedIn: !!state.user.id,
     userId: state.user.id,
     userCart: state.userCart,
-    userName: state.user
+    user: state.user
   }
 }
 
