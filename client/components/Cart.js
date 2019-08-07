@@ -124,7 +124,7 @@ class Cart extends React.Component {
               </Button>
               <PayWithCard
                 name="Dev Bites"
-                description="Thank You For Shopping With Dev Bites!"
+                description="The Best In Town!"
                 amount={totalPrice}
               />
             </div>
