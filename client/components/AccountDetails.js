@@ -2,7 +2,7 @@ import React from 'react'
 import {getUserOrdersThunk} from '../store/accountDetails'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {Typography, List, ListItem, Divider} from '@material-ui/core'
+import {Typography, List, ListItem, Divider, Grid} from '@material-ui/core'
 import {ShoppingBasket} from '@material-ui/icons'
 
 class AccountDetails extends React.Component {
@@ -11,48 +11,68 @@ class AccountDetails extends React.Component {
   }
   render() {
     let count = 1
+    const userInfo = this.props.userInfo
+    console.log(userInfo)
     return (
       <div>
-        <Typography variant="h3">Order History</Typography>
-        {this.props.orders.length ? (
-          <div>
-            <div style={{margin: '0.5rem', marginBottom: '1rem'}}>
-              Ordered by the time order was submitted.
-            </div>
-            {this.props.orders.map(order => {
-              return (
-                <div
-                  key={order.id}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center'
-                  }}
-                >
-                  <List>
-                    <ListItem>
-                      <ShoppingBasket />
-                      <h3 style={{margin: '0.5rem', marginRight: '2rem'}}>
-                        Order ID: {count++}
-                      </h3>
-                      <div>
-                        Ordered on:{' '}
-                        {new Date(order.createdAt)
-                          .toString()
-                          .replace(/(\d\d:\d\d:\d\d).+/, '')}
-                      </div>
-                      <p style={{margin: '0.5rem', marginRight: '2rem'}}>
-                        Total Price: $ {order.totalPrice}
-                      </p>
-                    </ListItem>
-                    <Divider variant="inset" component="li" />
-                  </List>
+        <Grid container direction="row" justify="space-evenly">
+          <Grid>
+            <Typography variant="h3">Order History</Typography>
+            {this.props.orders.length ? (
+              <div>
+                <div style={{margin: '0.5rem', marginBottom: '1rem'}}>
+                  Ordered by the time order was submitted.
                 </div>
-              )
-            })}
-          </div>
-        ) : (
-          <div>No Order History</div>
-        )}
+                {this.props.orders.map(order => {
+                  return (
+                    <div
+                      key={order.id}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center'
+                      }}
+                    >
+                      <List>
+                        <ListItem>
+                          <ShoppingBasket />
+                          <h3 style={{margin: '0.5rem', marginRight: '2rem'}}>
+                            Order ID: {count++}
+                          </h3>
+                          <div>
+                            Ordered on:{' '}
+                            {new Date(order.createdAt)
+                              .toString()
+                              .replace(/(\d\d:\d\d:\d\d).+/, '')}
+                          </div>
+                          <p style={{margin: '0.5rem', marginRight: '2rem'}}>
+                            Total Price: $ {order.totalPrice}
+                          </p>
+                        </ListItem>
+                        <Divider variant="inset" component="li" />
+                      </List>
+                    </div>
+                  )
+                })}
+              </div>
+            ) : (
+              <div>No Order History</div>
+            )}
+          </Grid>
+          <Grid>
+            <div>
+              <h1>Account Details</h1>
+              <h4>Name: </h4>{' '}
+              <p>
+                {' '}
+                {userInfo.firstName} {userInfo.lastName}
+              </p>
+              <br />
+              <h4>Current Address:</h4> <p>{userInfo.address}</p>
+              <br />
+              <h4>Email:</h4> <p>{userInfo.email}</p>
+            </div>
+          </Grid>
+        </Grid>
       </div>
     )
   }
@@ -61,7 +81,8 @@ class AccountDetails extends React.Component {
 const mapStateToProps = state => {
   return {
     orders: state.orders,
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    userInfo: state.user
   }
 }
 

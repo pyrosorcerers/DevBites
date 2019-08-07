@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {getLoggedInUserCartThunk} from '../store/cart'
-import {Breadcrumbs, Button, withStyles, Badge} from '@material-ui/core'
+import {Breadcrumbs, Button, withStyles, Badge, Avatar} from '@material-ui/core'
 import {
   Home,
   ShoppingCart,
@@ -20,6 +20,11 @@ const styles = theme => ({
   },
   cart: {
     marginRight: 15
+  },
+  userIcon: {
+    marginRight: 10,
+    color: '#fff',
+    backgroundColor: 'black'
   }
 })
 
@@ -37,7 +42,10 @@ class Navbar extends React.Component {
     return (
       <div>
         <div className="title-header">
-          <h1>DEV BITES</h1>
+          <Link to="/" style={{textDecoration: 'none', color: 'black'}}>
+            <h1>DEV BITES</h1>
+          </Link>
+
           <nav className="nav-bar">
             {isLoggedIn ? (
               <div className="nav-div">
@@ -67,7 +75,9 @@ class Navbar extends React.Component {
                     style={linkStyle}
                   >
                     {' '}
-                    <Person className={classes.icon} />
+                    <Avatar className={classes.userIcon}>
+                      {this.props.user.firstName.slice(0, 1)}
+                    </Avatar>
                     My Account
                   </Button>
                   <Button href="#" onClick={handleClick} style={linkStyle}>
