@@ -10,6 +10,9 @@ const OrderSubmitted = () => {
       <Link to="menu">
         <Button type="button">Continue Shopping</Button>
       </Link>
+      <Link to="accountDetails">
+        <Button type="button">See Order History</Button>
+      </Link>
     </div>
   )
 }

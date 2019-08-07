@@ -8,7 +8,9 @@ const AddedToCart = () => {
       Your meal has been successfully added to your shopping cart.
       <br />
       <Link to="cart">
-        <Button type="button">Proceed to Checkout</Button>
+        <Button type="button" variant="contained" color="primary">
+          Proceed to Checkout
+        </Button>
       </Link>
     </div>
   )

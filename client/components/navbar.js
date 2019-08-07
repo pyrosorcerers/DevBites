@@ -41,14 +41,20 @@ class Navbar extends React.Component {
     ))
     return (
       <div>
-        <div className="title-header">
+        <div
+          className="title-header"
+          style={{display: 'flex', alignItems: 'center'}}
+        >
           <Link to="/" style={{textDecoration: 'none', color: 'black'}}>
-            <h1>DEV BITES</h1>
+            <img src="logo.png" style={{width: '15rem', marginTop: '.5rem'}} />
           </Link>
 
-          <nav className="nav-bar">
+          <nav
+            className="nav-bar"
+            style={{display: 'flex', alignItems: 'center'}}
+          >
             {isLoggedIn ? (
-              <div className="nav-div">
+              <div className="nav-div" style={{marginTop: '0'}}>
                 <Breadcrumbs>
                   {/* The navbar will show these links after you log in */}
                   <Button
@@ -116,7 +122,7 @@ class Navbar extends React.Component {
                 </Breadcrumbs>
               </div>
             ) : (
-              <div className="nav-div">
+              <div className="nav-div" style={{marginTop: '0'}}>
                 <Breadcrumbs>
                   {/* The navbar will show these links before you log in */}
                   <Button
