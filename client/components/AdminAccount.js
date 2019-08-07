@@ -5,9 +5,6 @@ import {connect} from 'react-redux'
 class AdminAccount extends React.Component {
   constructor() {
     super()
-    this.state = {
-      usersToggle: false
-    }
     this.handleRemove = this.handleRemove.bind(this)
   }
 
@@ -20,7 +17,6 @@ class AdminAccount extends React.Component {
   }
 
   render() {
-    console.log(this.props.allUsers)
     return (
       <div>
         <h1>All Users</h1>
