@@ -1,8 +1,13 @@
 import axios from 'axios'
-import history from '../history'
-import user from './user'
+import {normalize, schema} from 'normalizr'
 
-// action type
+/* ============= CART REDUCER ============= */
+
+/* this reducer handles all actions regarding the meal(s)
+stored in the redux store when user requests for meal(s) data */
+
+/* ============= ACTION TYPES ============= */
+
 const GET_USER_CART = 'GET_USER_CART'
 const GET_LOGGED_IN_USER_CART = 'GET_LOGGED_IN_USER_CART'
 const ADD_MEAL_TO_CART = 'ADD_MEAL_TO_CART'
@@ -10,7 +15,8 @@ const REMOVE_MEAL_FROM_CART = 'REMOVE_MEAL_FROM_CART'
 const CHECKOUT_CART = 'CHECKOUT_CART'
 const EDIT_MEAL_QUANTITY = 'EDIT_MEAL_QUANTITY'
 
-// action creator
+/* ============= ACTION CREATORS ============= */
+
 export const getLoggedInUserCart = cart => {
   return {
     type: GET_LOGGED_IN_USER_CART,
@@ -55,7 +61,8 @@ export const editMealQuantity = (mealId, quantity) => {
   }
 }
 
-// thunk middleware
+/* ============= THUNKS ============= */
+
 export const getLoggedInUserCartThunk = () => {
   return async dispatch => {
     try {
@@ -148,10 +155,16 @@ export const editMealCartThunk = (userId, mealId, orderId, quantity) => {
 
 const userCart = {}
 
+// create schema for mealList on store
+const mealSchema = new schema.Entity('mealList')
+const mealListSchema = [mealSchema]
+
 export default function(state = userCart, action) {
   switch (action.type) {
     case GET_LOGGED_IN_USER_CART:
+      console.log(action.cart)
       return action.cart
+
     case GET_USER_CART:
       return action.cart
     case ADD_MEAL_TO_CART: {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-import {getLoggedInUserCartThunk} from '../store/cart'
+import {getLoggedInUserCartThunk} from '../store/reducers/userCartReducer'
 import {Breadcrumbs, Button, withStyles, Badge} from '@material-ui/core'
 import {
   Home,
@@ -68,7 +68,7 @@ class Navbar extends React.Component {
                   </Button>
                   <Button
                     component={materialRouter}
-                    to="/menu"
+                    to="/menu/limit=10&offset=0"
                     style={linkStyle}
                   >
                     {' '}
@@ -120,7 +120,7 @@ class Navbar extends React.Component {
                   </Button>
                   <Button
                     component={materialRouter}
-                    to="/menu"
+                    to="/menu/limit=10&offset=0"
                     style={linkStyle}
                   >
                     {' '}
@@ -143,8 +143,8 @@ class Navbar extends React.Component {
  */
 const mapStateToProps = state => {
   return {
-    isLoggedIn: !!state.user.id,
-    userId: state.user.id,
+    isLoggedIn: !!state.userAuth.id,
+    userId: state.userAuth.id,
     userCart: state.userCart
   }
 }

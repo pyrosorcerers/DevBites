@@ -7,16 +7,31 @@ const {
 } = require('../utils/authorize')
 module.exports = router
 
+// router.get('/', async (req, res, next) => {
+//   try {
+//     const userCart = await Order.findOne({
+//       include: [{model: Meal}],
+//       where: {
+//         userId: req.user.id,
+//         isCart: true
+//       }
+//     })
+//     res.json(userCart)
+//   } catch (err) {
+//     next(err)
+//   }
+// })
+
 router.get('/', async (req, res, next) => {
   try {
-    const userCart = await Order.findOne({
-      include: [{model: Meal}],
+    const userCartID = await Order.findOne({
       where: {
         userId: req.user.id,
         isCart: true
-      }
+      },
+      attributes: ['id']
     })
-    res.json(userCart)
+    res.json(userCartID.id)
   } catch (err) {
     next(err)
   }
@@ -25,7 +40,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:userId', authorizeAdmin, async (req, res, next) => {
   try {
     const userCart = await Order.findOne({
-      include: [{model: Meal}],
+      include: [{model: Meal}, {attributes: ['id']}],
       where: {
         userId: req.params.userId,
         isCart: true
