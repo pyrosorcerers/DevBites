@@ -116,25 +116,21 @@ class Cart extends React.Component {
               <br />
               Total Price of Cart: ${totalPrice}
               <br />
-              <Button
-                type="button"
+              <div
                 onClick={() => {
                   this.handleCheckoutCart(this.props.cart.id, totalPrice)
                 }}
-                color="primary"
-                variant="contained"
               >
-                Checkout
-              </Button>
-              <PayWithCard
-                name="Dev Bites"
-                description="The Best In Town!"
-                amount={totalPrice}
-              />
+                <PayWithCard
+                  name="Dev Bites"
+                  description="The Best In Town!"
+                  amount={totalPrice}
+                />
+              </div>
             </div>
           )
         ) : (
-          <div>Empty Cart</div>
+          <div>Loading...</div>
         )}
       </div>
     )

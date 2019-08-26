@@ -1,7 +1,6 @@
 import React from 'react'
 import {getUserOrdersThunk} from '../store/accountDetails'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import {Typography, List, ListItem, Divider, Grid} from '@material-ui/core'
 import {ShoppingBasket} from '@material-ui/icons'
 
@@ -12,7 +11,6 @@ class AccountDetails extends React.Component {
   render() {
     let count = 1
     const userInfo = this.props.userInfo
-    console.log(userInfo)
     return (
       <div>
         <Grid container direction="row" justify="space-evenly">

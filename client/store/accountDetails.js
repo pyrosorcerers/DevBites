@@ -62,19 +62,12 @@ export const getUserOrdersThunk = () => {
   }
 }
 
-// reducer
-// export to store/index.js combineReducer
 const orders = []
 
 export default function(state = orders, action) {
   switch (action.type) {
-    // case GET_SINGLE_USER:
-    //   return {...state, ...action.singleUser}
     case GET_USER_ORDERS:
       return action.orders
-    // case SINGLE_USER_ORDER:
-    // return {...state, ...action.order};
-    //   return action.order
     default:
       return state
   }

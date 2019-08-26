@@ -29,7 +29,10 @@ class AdminAccount extends React.Component {
                 </p>
                 <p>Email: {user.email}</p>
                 {!user.isAdmin ? (
-                  <button onClick={() => this.handleRemove(user.id)}>
+                  <button
+                    type="button"
+                    onClick={() => this.handleRemove(user.id)}
+                  >
                     Delete User
                   </button>
                 ) : (

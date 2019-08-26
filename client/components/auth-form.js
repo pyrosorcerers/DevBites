@@ -23,10 +23,6 @@ const AuthForm = props => {
     <div>
       <form onSubmit={handleSubmit} name={name}>
         <div>
-          {/* <label htmlFor="email">
-            <small>Password</small>
-          </label>
-          <input name="email" type="text" /> */}
           <TextField
             label="Email"
             variant="outlined"
@@ -36,10 +32,6 @@ const AuthForm = props => {
           />
         </div>
         <div>
-          {/* <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" /> */}
           <TextField
             label="Password"
             type="password"
