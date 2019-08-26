@@ -7,6 +7,7 @@ import {me} from './store'
 import Meals from './components/Menu'
 import SingleMeal from './components/SingleMeal'
 import Cart from './components/Cart'
+import AdminAccount from './components/AdminAccount'
 import AccountDetails from './components/AccountDetails'
 import OrderSubmitted from './components/OrderSubmitted'
 import AddedToCart from './components/AddedToCart'
@@ -32,6 +33,7 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
+            <Route path="/adminAccount" component={AdminAccount} />
             <Route path="/home" component={UserHome} />
             <Route path="/cart" component={Cart} />
             <Route path="/orderSubmitted" component={OrderSubmitted} />

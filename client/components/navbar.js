@@ -20,6 +20,11 @@ const styles = theme => ({
   },
   cart: {
     marginRight: 15
+  },
+  userIcon: {
+    marginRight: 10,
+    color: '#fff',
+    backgroundColor: 'black'
   }
 })
 
@@ -29,18 +34,27 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const {handleClick, isLoggedIn, classes} = this.props
+    const {handleClick, isLoggedIn, classes, user} = this.props
     const linkStyle = {textDecoration: 'none', color: 'black'}
     const materialRouter = React.forwardRef((props, ref) => (
       <Link innerRef={ref} {...props} />
     ))
     return (
       <div>
-        <div className="title-header">
-          <h1>DEV BITES</h1>
-          <nav className="nav-bar">
+        <div
+          className="title-header"
+          style={{display: 'flex', alignItems: 'center'}}
+        >
+          <Link to="/" style={{textDecoration: 'none', color: 'black'}}>
+            <img src="logo.png" style={{width: '15rem', marginTop: '.5rem'}} />
+          </Link>
+
+          <nav
+            className="nav-bar"
+            style={{display: 'flex', alignItems: 'center'}}
+          >
             {isLoggedIn ? (
-              <div className="nav-div">
+              <div className="nav-div" style={{marginTop: '0'}}>
                 <Breadcrumbs>
                   {/* The navbar will show these links after you log in */}
                   <Button
@@ -52,13 +66,24 @@ class Navbar extends React.Component {
                     <Home className={classes.icon} />
                     Home
                   </Button>
+                  {user.isAdmin && (
+                    <Button
+                      component={materialRouter}
+                      style={linkStyle}
+                      to="/adminAccount"
+                    >
+                      Admin Access
+                    </Button>
+                  )}
                   <Button
                     component={materialRouter}
                     to="/accountDetails"
                     style={linkStyle}
                   >
                     {' '}
-                    <Person className={classes.icon} />
+                    <Avatar className={classes.userIcon}>
+                      {this.props.user.firstName.slice(0, 1)}
+                    </Avatar>
                     My Account
                   </Button>
                   <Button href="#" onClick={handleClick} style={linkStyle}>
@@ -97,7 +122,7 @@ class Navbar extends React.Component {
                 </Breadcrumbs>
               </div>
             ) : (
-              <div className="nav-div">
+              <div className="nav-div" style={{marginTop: '0'}}>
                 <Breadcrumbs>
                   {/* The navbar will show these links before you log in */}
                   <Button

@@ -9,11 +9,20 @@ import {
 } from '../store/reducers/userCartReducer'
 import {getCartOrderIDThunk} from '../store/reducers/userCartReducer2'
 import {connect} from 'react-redux'
-import {Grid, Paper, Typography, withStyles} from '@material-ui/core'
+import {
+  Grid,
+  Paper,
+  Typography,
+  withStyles,
+  Select,
+  Button,
+  MenuItem
+} from '@material-ui/core'
+import {AddShoppingCart} from '@material-ui/icons'
 
 const styles = theme => ({
-  singleMealBody: {
-    marginLeft: 10
+  icon: {
+    marginRight: 10
   }
 })
 
@@ -80,23 +89,26 @@ class singleMeal extends React.Component {
               <br />
               <Typography variant="h6">calories: {meal.calories}</Typography>
               <br />
-              <Typography>${meal.price}</Typography>
+              <Typography>Meal Price: ${meal.price}</Typography>
 
               {this.props.isLoggedIn ? (
                 <div>
-                  <select onChange={this.handleChange}>
+                  <Select
+                    onChange={this.handleChange}
+                    value={this.state.quantity}
+                  >
                     {Array(5)
                       .fill(1)
                       .map((val, i) => {
                         return (
-                          <option value={val + i} key={val + i}>
+                          <MenuItem value={val + i} key={val + i}>
                             {val + i}
-                          </option>
+                          </MenuItem>
                         )
                       })}
-                  </select>
+                  </Select>
 
-                  <button
+                  <Button
                     type="submit"
                     onClick={this.handleSubmit}
                     disabled={
@@ -107,8 +119,10 @@ class singleMeal extends React.Component {
                         ))
                     }
                   >
+                    {' '}
+                    <AddShoppingCart className="classes.icon" />
                     Add to Cart
-                  </button>
+                  </Button>
                 </div>
               ) : (
                 <p>Please log in to add to cart!</p>

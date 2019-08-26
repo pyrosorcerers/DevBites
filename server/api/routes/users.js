@@ -6,7 +6,7 @@ module.exports = router
 router.get('/', authorizeAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
-      attributes: ['id', 'email']
+      attributes: ['id', 'firstName', 'lastName', 'email', 'isAdmin']
     })
     res.json(users)
   } catch (err) {
@@ -49,6 +49,19 @@ router.get('/:id/orders', authorizeCorrectUser, async (req, res, next) => {
       }
     })
     res.json(userOrders)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.delete('/', authorizeAdmin, async (req, res, next) => {
+  try {
+    await User.destroy({
+      where: {
+        id: req.body.userId
+      }
+    })
+    res.sendStatus(204)
   } catch (err) {
     next(err)
   }
