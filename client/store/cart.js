@@ -123,7 +123,7 @@ export const checkoutCartThunk = (userId, orderId, totalPrice) => {
       }
       await axios.put(`/api/cart`, updatePrice)
       dispatch(checkoutCart())
-      history.push('/orderSubmitted')
+      // history.push('/orderSubmitted')
     } catch (error) {
       console.log(error)
     }

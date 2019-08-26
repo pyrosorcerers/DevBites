@@ -54,9 +54,6 @@ export default class EditBtn extends React.Component {
   }
 }
 
-// expect quantity prop pass down
-// expect handleEdit function prop pass down
-// expect mealId and orderId props pass down
 EditBtn.propTypes = {
   quantity: PropTypes.number,
   handleEdit: PropTypes.func,

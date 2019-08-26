@@ -9,8 +9,11 @@ export const UserHome = props => {
   const {email} = props
 
   return (
-    <div>
+    <div
+      style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
+    >
       <h3>Welcome, {email}</h3>
+      <img src="https://www.thespruceeats.com/thmb/8SzwOOJ6dGT1pcuoAw9e_e_tWtQ=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-480379752-588cb5de3df78caebc869bcf.jpg" />
     </div>
   )
 }
