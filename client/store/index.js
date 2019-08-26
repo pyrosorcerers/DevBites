@@ -2,20 +2,20 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import mealList from './reducers/mealListReducer'
-import mealCount from './reducers/mealCountReducer'
-import userAuth from './reducers/userAuthReducer'
-import userCartID from './reducers/userCartReducer2'
-import userOrderList from './reducers/userOrderListReducer'
-import userCart from './reducers/userCartReducer'
+import user from './user'
+import meals from './meals'
+import singleMeal from './singleMeal'
+import orders from './accountDetails'
+import userCart from './cart'
+import allUsers from './admin'
 
 const reducer = combineReducers({
-  mealList,
-  mealCount,
-  userAuth,
-  userOrderList,
+  user,
+  meals,
+  singleMeal,
+  orders,
   userCart,
-  userCartID
+  allUsers
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
@@ -23,4 +23,4 @@ const middleware = composeWithDevTools(
 const store = createStore(reducer, middleware)
 
 export default store
-export * from './reducers/userAuthReducer'
+export * from './user'

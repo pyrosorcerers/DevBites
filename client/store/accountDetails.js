@@ -1,4 +1,5 @@
 import axios from 'axios'
+import history from '../history'
 
 // action type
 const GET_SINGLE_USER = 'GET_SINGLE_USER'

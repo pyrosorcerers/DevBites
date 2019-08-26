@@ -5,7 +5,7 @@ import {
   deleteMealFromCartThunk,
   checkoutCartThunk,
   editMealCartThunk
-} from '../store/reducers/userCartReducer'
+} from '../store/cart'
 import {Link} from 'react-router-dom'
 import {DeleteForever} from '@material-ui/icons'
 import {
@@ -91,7 +91,22 @@ class Cart extends React.Component {
                             </Fab>
                           </Avatar>
                         </ListItemAvatar>
-                        <ListItemText primary={meal.name} />
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            width: '20rem'
+                          }}
+                        >
+                          <ListItemText primary={meal.name} />
+                          <EditBtn
+                            quantity={quantity}
+                            price={meal.price}
+                            handleEdit={this.handleEditMeal}
+                            mealId={meal.id}
+                            orderId={this.props.cart.id}
+                          />
+                        </div>
                       </ListItem>
                       <Divider variant="inset" component="li" />
                     </div>
@@ -129,7 +144,7 @@ class Cart extends React.Component {
 const mapStateToProps = state => {
   return {
     cart: state.userCart,
-    user: state.userAuth
+    user: state.user
   }
 }
 

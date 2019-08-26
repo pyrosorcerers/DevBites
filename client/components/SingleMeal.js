@@ -1,13 +1,6 @@
 import React from 'react'
-import {
-  populateMealListThunk,
-  clearMealList
-} from '../store/reducers/mealListReducer'
-import {
-  getLoggedInUserCartThunk,
-  addMealToCartThunk
-} from '../store/reducers/userCartReducer'
-import {getCartOrderIDThunk} from '../store/reducers/userCartReducer2'
+import {getSingleMealThunk, removeSingleMeal} from '../store/singleMeal'
+import {getLoggedInUserCartThunk, addMealToCartThunk} from '../store/cart'
 import {connect} from 'react-redux'
 import {
   Grid,
@@ -52,20 +45,17 @@ class singleMeal extends React.Component {
   }
 
   componentDidMount() {
-    const query = this.props.match.params.query
-    this.props.populateMealListThunk(false, query)
-    this.props.getCartOrderIDThunk()
-    this.props.getLoggedInUserCart()
+    this.props.getMeal(this.props.match.params.id)
+    this.props.isLoggedIn && this.props.getLoggedInUserCart()
   }
 
   componentWillUnmount() {
-    this.props.clearMealList()
+    this.props.removeSingleMeal()
   }
 
   render() {
-    const meal = this.props.mealList[Object.keys(this.props.mealList)[0]]
+    const meal = this.props.singleMeal
     const classes = this.props
-    if (!meal) return <div>not yet</div>
     return (
       <div key={meal.id}>
         <Paper className="single-Meal-whole-paper">
@@ -137,22 +127,20 @@ class singleMeal extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    mealList: state.mealList,
-    isLoggedIn: !!state.userAuth.id,
-    userId: state.userAuth.id,
+    singleMeal: state.singleMeal,
+    isLoggedIn: !!state.user.id,
+    userId: state.user.id,
     userCart: state.userCart
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
+    removeSingleMeal: () => dispatch(removeSingleMeal()),
+    getMeal: mealId => dispatch(getSingleMealThunk(mealId)),
     getLoggedInUserCart: () => dispatch(getLoggedInUserCartThunk()),
     addToCart: (quantity, mealId, userId) =>
-      dispatch(addMealToCartThunk(quantity, mealId, userId)),
-    populateMealListThunk: (bool, query) =>
-      dispatch(populateMealListThunk(bool, query)),
-    clearMealList: () => dispatch(clearMealList()),
-    getCartOrderIDThunk: () => dispatch(getCartOrderIDThunk())
+      dispatch(addMealToCartThunk(quantity, mealId, userId))
   }
 }
 
