@@ -1,5 +1,5 @@
 import React from 'react'
-import {getUserOrdersThunk} from '../store/accountDetails'
+import {getUserOrdersThunk} from '../store/reducers/userOrderListReducer'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {Typography, List, ListItem, Divider, Grid} from '@material-ui/core'
@@ -8,6 +8,9 @@ import {ShoppingBasket} from '@material-ui/icons'
 class AccountDetails extends React.Component {
   componentDidMount() {
     this.props.getUserOrders()
+    const query = this.props.match.params.query
+    // accountDetails/orders?id=1&id=2...
+    this.props.populateMealListThunk(query)
   }
   render() {
     let count = 1
