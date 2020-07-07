@@ -56,7 +56,7 @@
     "material-ui-flat-pagination": "^3.2.0",
     "morgan": "^1.9.1",
     "normalizr": "^3.4.1",
-    "npm": "^6.10.3",
+    "npm": "^6.14.6",
     "passport": "^0.4.0",
     "passport-google-oauth": "^2.0.0",
     "pg": "^7.9.0",
